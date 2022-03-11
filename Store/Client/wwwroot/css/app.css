@@ -2,7 +2,22 @@
 
 :root {
     --main-theme-color: #365edc;
+    --light-gray-color: #999;
     --extension-background-color: #f8f8f8;
+}
+
+a {
+    text-decoration: none;
+}
+
+    a:hover, a:focus, a:active {
+        color: var(--main-theme-color);
+    }
+
+ol.no-style, ul.no-style {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 html, body {

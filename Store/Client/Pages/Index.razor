@@ -11,3 +11,16 @@ Welcome to your new app.
 <Teaser />
 
 <Loading />
+
+<Breadcrumbs Items=breadcrumbs />
+
+@code {
+    List<Breadcrumb> breadcrumbs = new()
+    {
+        new Breadcrumb("1", "/index"),
+        new Breadcrumb("1", "1"),
+        new Breadcrumb("1", "1/431"),
+        new Breadcrumb("1", "1"),
+        new Breadcrumb("1", "1"),
+    };
+}

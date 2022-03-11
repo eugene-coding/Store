@@ -1,0 +1,23 @@
+﻿.breadcrumbs {
+    display: flex;
+}
+
+li {
+    color: var(--light-gray-color);
+    font-size: 0.867rem;
+    font-weight: 400;
+    line-height: 1.333rem;
+}
+
+    li + li:before {
+        content: "—";
+        margin: 0 10px;
+    }
+
+a {
+    color: inherit;
+}
+
+    a:hover, a:focus, a:active {
+        color: var(--main-theme-color);
+    }

@@ -1,0 +1,19 @@
+﻿.loading {
+    text-align: center;
+    margin: 2rem 0.667rem;
+}
+
+svg {
+    font-size: 1.4rem;
+}
+
+p {
+    font-size: 0.8rem;
+    letter-spacing: 0.2667rem;
+    text-transform: uppercase;
+    margin: 0.667rem 0 0;
+}
+
+small {
+    font-size: 1rem;
+}

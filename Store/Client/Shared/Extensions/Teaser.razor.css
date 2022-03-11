@@ -1,0 +1,45 @@
+﻿* {
+    --col-margin-bottom: 3.333rem;
+}
+
+svg {
+    color: var(--main-theme-color);
+    height: 3.333rem;
+    margin-right: 2.333rem;
+}
+
+.teaser {
+    background-color: var(--extension-background-color);
+    margin-bottom: 1.4rem;
+    padding: 5.333rem 0;
+}
+
+.row {
+    margin-bottom: calc(0px - var(--col-margin-bottom));
+}
+
+.col {
+    display: flex;
+    margin-bottom: var(--col-margin-bottom);
+}
+
+.title {
+    font-size: 1.133rem;
+    margin-bottom: 0.533rem;
+}
+
+.description {
+    font-size: 0.933rem;
+    line-height: 1.4rem;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    svg {
+        margin-right: 3.333rem;
+    }
+
+    .col {
+        align-items: center;
+    }
+}

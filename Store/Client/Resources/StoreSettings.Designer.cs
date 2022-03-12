@@ -140,5 +140,14 @@ namespace Store.Client.Resources {
                 return ResourceManager.GetString("WorkingHours", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 400120.
+        /// </summary>
+        public static string ZipCode {
+            get {
+                return ResourceManager.GetString("ZipCode", resourceCulture);
+            }
+        }
     }
 }

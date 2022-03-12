@@ -1,0 +1,26 @@
+﻿@if (_questions is not null)
+{
+    @if (_questions.Count > 0){
+        <div class="border-bottom">
+            <section class="container">
+                <div class="row">
+                    <div class="text col-lg-4 col-12">
+                        <header>
+                            <span class="label">@Text["Subtitle"]</span>
+                            <h2>@Text["Title"]</h2>
+                        </header>
+
+                        <p class="description">@Description</p>
+                    </div>
+                    <div class="col-lg-7 offset-lg-1 col-12">
+                        <FaqList Items=_questions />
+                    </div>
+                </div>
+            </section>
+        </div>
+    }
+}
+else
+{
+    <Loading />
+}

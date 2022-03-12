@@ -1,0 +1,28 @@
+﻿@if (Items.Count > 0)
+{
+    <ul class="no-style">
+        @foreach(var item in Items)
+        {
+            <li>
+                <details>
+                    <summary>
+                        @item.Question
+                        <i class="icon fa-solid fa-plus"></i>
+                    </summary>
+
+                    @if (item.AnswerBody is not null)
+                    {
+                        <div class="body">
+                            @((MarkupString)item.AnswerBody)
+
+                            @if (item.AnswerFooter is not null)
+                            {
+                                <div class="footer">@((MarkupString)item.AnswerFooter)</div>
+                            }
+                        </div>
+                    }
+                </details>
+            </li>
+        }
+    </ul>
+}

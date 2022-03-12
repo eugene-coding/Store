@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Alt" xml:space="preserve">
-    <value>Двое сотрудников кампании {0} по производству акриловых светодиодных фигур обсуждают проект</value>
+    <value>Двое сотрудников компании {0} по производству акриловых светодиодных фигур обсуждают проект</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>&lt;p&gt;{0} — компания, которая занимается установкой систем безопасности, автоматизации и обеспечения комфортной жизнедеятельности. С 2009 года мы занимаемся сервисным обслуживанием и модернизацией любых инженерных систем.&lt;/p&gt;

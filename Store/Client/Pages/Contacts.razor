@@ -1,0 +1,48 @@
+﻿<PageHeader Title=@Text["HeadingTitle"]  Breadcrumbs=_breadcrumbs />
+
+<div class="row">
+    <div class="left col-lg-6">
+        @if (!string.IsNullOrWhiteSpace(@StoreSettings["Image"]))
+        {
+            <img class="responsive rounded" src="@StoreSettings["Image"]" alt="@Alt" />
+        }
+
+        <address>
+            <div class="properties row">
+                <div class="col-md-6">
+                    <div class="property">
+                        <span class="label">@Text["Address"]</span>
+                        <span>@($"{StoreSettings["City"]}, {StoreSettings["Street"]}")</span>
+                    </div>
+
+                    <div class="property">
+                        <span class="label">@Text["WorkingHours"]</span>
+                        <span>@StoreSettings["WorkingHours"]</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="property">
+                        <span class="label">@Text["Phone"]</span>
+                        <a href="tel:@StoreSettings["Phone"]">@StoreSettings["Phone"]</a>
+                    </div>
+
+                    <div class="property">
+                        <span class="label">@Text["Email"]</span>
+                        <a href="mailto:@StoreSettings["Email"]">@StoreSettings["Email"]</a>
+                    </div>
+                </div>
+            </div>
+        </address>
+
+        @if (!string.IsNullOrWhiteSpace(Text["Description"]))
+        {
+            <div class="description">@((MarkupString)Text["Description"].ToString())</div>
+        }
+
+        <button class="white">@Text["Ask"]</button>
+    </div>
+
+    <address class="right col-lg-6">
+        <iframe src="@StoreSettings["MapSource"]"></iframe>
+    </address>
+</div>

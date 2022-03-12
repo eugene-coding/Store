@@ -79,11 +79,11 @@ namespace Store.Client.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 36.
+        ///   Ищет локализованную строку, похожую на images/store.jpeg.
         /// </summary>
-        public static string House {
+        public static string Image {
             get {
-                return ResourceManager.GetString("House", resourceCulture);
+                return ResourceManager.GetString("Image", resourceCulture);
             }
         }
         
@@ -93,6 +93,15 @@ namespace Store.Client.Resources {
         public static string Logo {
             get {
                 return ResourceManager.GetString("Logo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на https://yandex.com/map-widget/v1/?um=constructor%3Ab3d5dd9eed62d25c625724c51f7c943981b1e3465560759cbb7aaa1fe7aabf93&amp;scroll=false.
+        /// </summary>
+        public static string MapSource {
+            get {
+                return ResourceManager.GetString("MapSource", resourceCulture);
             }
         }
         
@@ -115,7 +124,7 @@ namespace Store.Client.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на ул. Милиционера Буханцева.
+        ///   Ищет локализованную строку, похожую на ул. Милиционера Буханцева 36.
         /// </summary>
         public static string Street {
             get {

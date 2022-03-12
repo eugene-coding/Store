@@ -1,12 +1,13 @@
 ﻿using Microsoft.JSInterop;
 
-using Store.Client.Resources;
-
 namespace Store.Client.Shared.Common.Header;
 
 public partial class MobileMenu : IAsyncDisposable
 {
     private IJSObjectReference? _module;
+
+    [Inject]
+    public IStringLocalizer<Contacts> ContactsText { get; init; } = null!;
 
     [Inject]
     public IStringLocalizer<StoreSettings> StoreSettings { get; init; } = null!;

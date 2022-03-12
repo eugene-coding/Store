@@ -21,6 +21,7 @@
 
 :root {
     --main-theme-color: #365edc;
+    --main-theme-color-hue: #5273e0;
     --main-text-color: #333;
     --gray-color: #666;
     --light-gray-color: #999;
@@ -35,7 +36,7 @@
     font: 15px/25px Montserrat, Arial, sans-serif;
     margin: 0;
     padding: 0;
-    transition: all ease-in-out .15s;
+    transition: all ease-in-out .10s;
 }
 
 html, body {
@@ -55,7 +56,7 @@ abbr {
     font-weight: inherit
 }
 
-button {
+button, .button {
     border: 1px solid var(--main-theme-color);
     border-radius: var(--border-radius);
     font-size: 14px;
@@ -70,8 +71,45 @@ button {
         border: none;
     }
 
+    button.main, .button.main {
+        background: var(--main-theme-color);
+        color: white;
+    }
+
+        button.main:hover, button.main:focus, button.main:active,
+        .button.main:hover, .button.main:focus, .button.main:active {
+            background: var(--main-theme-color-hue);
+            color: white;
+        }
+
+    button.white, .button.white {
+        background: white;
+        color: var(--main-theme-color);
+    }
+
+        button.white:hover, button.white:focus, button.white:active,
+        .button.white:hover, .button.white:focus, .button.white:active {
+            background: var(--main-theme-color);
+            color: white;
+        }
+
+    button.no-background {
+        border: none;
+        background-color: transparent;
+    }
+
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
+}
+
+h1 {
+    font-size: 2.8em;
+    line-height: 57px;
+    margin: 0;
+    padding-bottom: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: middle;
 }
 
 h2 {
@@ -81,11 +119,21 @@ h2 {
     margin-bottom: 25px;
 }
 
-img.responsive {
+iframe {
+    border-radius: var(--border-radius);
+    border: 1px solid #ececec;
+}
+
+
+img {
     max-width: 100%;
     max-height: 100%;
     width: auto;
     height: auto;
+}
+
+.rounded {
+    border-radius: var(--border-radius);
 }
 
 ol.no-style, ul.no-style {

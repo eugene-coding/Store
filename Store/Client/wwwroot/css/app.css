@@ -2,8 +2,15 @@
 
 :root {
     --main-theme-color: #365edc;
+    --main-text-color: #333;
     --light-gray-color: #999;
+    --overlay-color: #3a3f44;
     --extension-background-color: #f8f8f8;
+    --border-radius: 6px;
+}
+
+* {
+    transition: all ease-in-out .15s;
 }
 
 a {
@@ -14,10 +21,36 @@ a {
         color: var(--main-theme-color);
     }
 
+button {
+    border: 1px solid var(--main-theme-color);
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    padding: 10px 20px;
+    display: flex;
+}
+
+    button.no-style {
+        background-color: transparent;
+        border: none;
+    }
+
 ol.no-style, ul.no-style {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+.overlay {
+    background-color: var(--overlay-color);
+    opacity: .7;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2999;
 }
 
 html, body {

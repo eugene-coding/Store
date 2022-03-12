@@ -14,7 +14,7 @@ public partial class Faq
     [Inject]
     public IStringLocalizer<StoreSettings> StoreSettings { get; init; } = null!;
 
-    public MarkupString Description
+    private MarkupString Description
     {
         get
         {

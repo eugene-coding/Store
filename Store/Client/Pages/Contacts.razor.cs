@@ -15,7 +15,7 @@ public partial class Contacts
     [Inject]
     public IStringLocalizer<StoreSettings> StoreSettings { get; init; } = null!;
 
-    public string Alt => Text.GetString("Alt", StoreSettings["Name"]);
+    private string Alt => Text.GetString("Alt", StoreSettings["Name"]);
 
     protected override void OnInitialized()
     {

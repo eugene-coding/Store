@@ -138,6 +138,11 @@ img.responsive {
     border-radius: var(--border-radius);
 }
 
+
+ul {
+    list-style-type: "—   ";
+}
+
 ol.no-style, ul.no-style {
     list-style-type: none;
     margin: 0;

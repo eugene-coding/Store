@@ -1,0 +1,22 @@
+﻿* {
+    --payment-item-margin: 10px;
+}
+
+.payment {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 calc(0px - var(--payment-item-margin));
+}
+
+li {
+    margin: 0 var(--payment-item-margin);
+}
+
+img {
+    filter: grayscale(1)
+}
+
+    img:hover, img:focus, img:active {
+        filter: grayscale(0);
+    }

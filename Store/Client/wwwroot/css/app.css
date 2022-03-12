@@ -29,6 +29,7 @@
     --extension-background-color: #f8f8f8;
     --border: 1px solid #e5e5e5;
     --border-radius: 6px;
+    --aside-width: 348px;
 }
 
 * {
@@ -125,11 +126,12 @@ iframe {
 }
 
 
-img {
+img.responsive {
     max-width: 100%;
     max-height: 100%;
     width: auto;
     height: auto;
+    margin-bottom: 2rem;
 }
 
 .rounded {
@@ -164,6 +166,41 @@ ol.no-style, ul.no-style {
     line-height: 20px;
 }
 
+.content {
+    width: calc(100% - var(--aside-width));
+}
+
+    .content.right {
+        float: right;
+    }
+
+    .content.left {
+        float: left;
+    }
+
+aside {
+    width: var(--aside-width);
+}
+
+    aside.left {
+        padding-right: 48px;
+    }
+
+    aside.right {
+        padding-left: 48px;
+    }
+
+@media (max-width: 991px) {
+    aside {
+        display: none;
+    }
+
+    .content {
+        float: none;
+        width: 100%
+    }
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -180,10 +217,6 @@ a, .btn-link {
     color: #fff;
     background-color: #1b6ec2;
     border-color: #1861ac;
-}
-
-.content {
-    padding-top: 1.1rem;
 }
 
 .valid.modified:not([type=checkbox]) {

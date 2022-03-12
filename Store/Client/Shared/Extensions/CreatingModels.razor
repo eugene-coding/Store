@@ -1,0 +1,42 @@
+﻿<div class="creating-models">
+    <div class="container">
+        <section class="row">
+            <div class="text col-md-5 col-12">
+                <BlockHeader>
+                    <Subtitle>@Text["FirstSubtitle"]</Subtitle>
+                    <Title>@((MarkupString)Text["FirstTitle"].ToString())</Title>
+                    <Description>@((MarkupString)Text["FirstDescription"].ToString())</Description>
+                </BlockHeader>
+            </div>
+            <div class="model col-md-6 col-12 offset-md-1">
+                <img class="responsive" src="@($"{ImagesPath}/flamingos.gif")" height="600" width="600" alt="@Text["FirstAlt"]" />
+            </div>
+        </section>
+
+        <section class="row">
+            <div class="model col-md-6 col-12">
+                <img class="responsive" src="@($"{ImagesPath}/flowerpot-no-light.gif")" height="600" width="600" alt="@Text["SecondAlt"]" />
+            </div>
+            <div class="text offset-md-1 col-md-5 col-12">
+                <BlockHeader>
+                    <Subtitle>@Text["SecondSubtitle"]</Subtitle>
+                    <Title>@Text["SecondTitle"]</Title>
+                    <Description>@((MarkupString)Text["SecondDescription"].ToString())</Description>
+                </BlockHeader>
+            </div>
+        </section>
+
+        <section class="row">
+            <div class="text col-md-5 col-12">
+                <BlockHeader>
+                    <Subtitle>@Text["ThirdSubtitle"]</Subtitle>
+                    <Title>@Text["ThirdTitle"]</Title>
+                    <Description>@((MarkupString)Text["ThirdDescription"].ToString())</Description>
+                </BlockHeader>
+            </div>
+            <div class="model col-md-6 col-12 offset-md-1">
+                <img class="responsive" src="@($"{ImagesPath}/flowerpot.gif")" height="600" width="600" alt="@Text["ThirdAlt"]" />
+            </div>
+        </section>
+    </div>
+</div>

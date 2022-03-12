@@ -10,6 +10,7 @@ svg {
 
 .teaser {
     background-color: var(--extension-background-color);
+    border-bottom: var(--border);
     margin-bottom: 1.4rem;
     padding: 5.333rem 0;
 }

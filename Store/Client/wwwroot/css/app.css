@@ -26,6 +26,7 @@
     --light-gray-color: #999;
     --overlay-color: #3a3f44;
     --extension-background-color: #f8f8f8;
+    --border: 1px solid #e5e5e5;
     --border-radius: 6px;
 }
 
@@ -48,6 +49,11 @@ a {
     a:hover, a:focus, a:active {
         color: var(--main-theme-color);
     }
+
+abbr {
+    font-size: inherit;
+    font-weight: inherit
+}
 
 button {
     border: 1px solid var(--main-theme-color);
@@ -75,6 +81,13 @@ h2 {
     margin-bottom: 25px;
 }
 
+img.responsive {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
 ol.no-style, ul.no-style {
     list-style-type: none;
     margin: 0;
@@ -82,7 +95,7 @@ ol.no-style, ul.no-style {
 }
 
 .border-bottom {
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: var(--border);
 }
 
 .overlay {

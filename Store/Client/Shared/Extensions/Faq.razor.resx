@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Description" xml:space="preserve">
-    <value>В этом разделе публикуем ответы на популярные вопросы. Не нашли ответов? Свяжитесь с нами &lt;a href="mailto:{0}"&gt;по почте&lt;/a&gt; или &lt;a href="tel:{1}"&gt;телефону&lt;/a&gt; для консультации. Расскажем детали и подготовим индивидуальные условия сотрудничества</value>
+    <value>&lt;p&gt;В этом разделе публикуем ответы на популярные вопросы. Не нашли ответов? Свяжитесь с нами &lt;a href="mailto:{0}"&gt;по почте&lt;/a&gt; или &lt;a href="tel:{1}"&gt;телефону&lt;/a&gt; для консультации. Расскажем детали и подготовим индивидуальные условия сотрудничества&lt;/p&gt;</value>
   </data>
   <data name="Subtitle" xml:space="preserve">
     <value>Ответы на популярные вопросы</value>

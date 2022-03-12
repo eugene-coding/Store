@@ -1,0 +1,10 @@
+﻿h2, h2 * {
+    font-size: 2.667rem;
+    line-height: 3.333rem;
+    margin: 0;
+}
+
+div {
+    color: var(--gray-color);
+    margin-top: 1.4rem;
+}

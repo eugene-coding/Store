@@ -1,0 +1,17 @@
+﻿<address class="address@(WhiteText ? " white" : string.Empty)">
+    <div>
+        <i class="fa-solid fa-phone"></i>
+        <div>
+            <a class="phone" href="tel:@StoreSettings["Phone"]">@StoreSettings["Phone"]</a>
+            <button class="request-call">Заказать звонок</button>
+        </div>
+    </div>
+    <div>
+        <i class="fa-regular fa-envelope"></i>
+        <a href="mailto:@StoreSettings["Email"]">@StoreSettings["Email"]</a>
+    </div>
+    <div>
+        <i class="fa-solid fa-location-dot"></i>
+        <span>@($"{StoreSettings["City"]}, {StoreSettings["Street"]}")</span>
+    </div>
+</address>

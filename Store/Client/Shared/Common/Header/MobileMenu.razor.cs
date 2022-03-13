@@ -7,6 +7,12 @@ public partial class MobileMenu : IAsyncDisposable
     private IJSObjectReference? _module;
 
     [Inject]
+    public IStringLocalizer<Projects> ProjectsText { get; init; } = null!;
+
+    [Inject]
+    public IStringLocalizer<Catalog> CatalogText { get; init; } = null!;
+
+    [Inject]
     public IStringLocalizer<Help> HelpText { get; init; } = null!;
 
     [Inject]

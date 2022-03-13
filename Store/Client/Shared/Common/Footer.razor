@@ -5,10 +5,13 @@
                 <nav class="first-row">
                     <ul class="menu">
                         <li>
-                            <a href="Projects.Url">Проекты</a>
+                            <a href="@Projects.Url">@ProjectsText["HeadingTitle"]</a>
                         </li>
                         <li>
                             <a href="@Catalog.Url">@CatalogText["HeadingTitle"]</a>
+                        </li>
+                        <li>
+                            <a href="@Help.Url">@HelpText["HeadingTitle"]</a>
                         </li>
                         <li>
                             <a href="@Company.Url">@CompanyText["HeadingTitle"]</a>
@@ -24,26 +27,12 @@
                         <i class="subscribe-icon fa-regular fa-paper-plane"></i>
                         <span>Подписаться на рассылку</span>
                     </button>
+
+                    <Social />
                 </div>
             </div>
 
-                <address>
-                    <div>
-                        <i class="fa-solid fa-phone"></i>
-                        <div>
-                            <a class="phone" href="tel:@StoreSettings["Phone"]">@StoreSettings["Phone"]</a>
-                            <button class="request-call">Заказать звонок</button>
-                        </div>
-                    </div>
-                    <div>
-                        <i class="fa-regular fa-envelope"></i>
-                        <a href="mailto:@StoreSettings["Email"]">@StoreSettings["Email"]</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>@($"{StoreSettings["City"]}, {StoreSettings["Street"]}")</span>
-                    </div>
-                </address>
+            <Address WhiteText />
         </div>
 
         <div class="bottom">

@@ -10,6 +10,7 @@
 footer {
     background-color: #333;
     color: #999;
+    margin-top: 80px;
 }
 
 a {
@@ -197,6 +198,10 @@ address {
         align-items: center;
         padding-top: 32px;
         text-align: center;
+    }
+
+    .second-row {
+        flex-direction: column;
     }
 
     .body {

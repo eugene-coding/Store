@@ -12,7 +12,10 @@
     <nav class="body">
         <ul class="menu no-style">
             <li class="menu__item">
-                <a class="menu__link" href="/">Проекты</a>
+                <a class="menu__link" href="@Projects.Url">@ProjectsText["HeadingTitle"]</a>
+            </li>
+            <li class="menu__item">
+                <a class="menu__link" href="@Catalog.Url">@CatalogText["HeadingTitle"]</a>
             </li>
             <li class="menu__item">
                 <a class="menu__link" href="@Help.Url">@HelpText["HeadingTitle"]</a>
@@ -25,6 +28,11 @@
             </li>
         </ul>
     </nav>
+
+    <div class="footer">
+        <Address />
+        <Social />
+    </div>
 </div>
 
 <div id="mobile-menu-overlay" class="overlay" @onclick=Close></div>

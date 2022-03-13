@@ -4,16 +4,16 @@
         @foreach(var item in Items)
         {
             <li>
-                <details>
+                <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                     <summary>
-                        @item.Question
+                        <span itemprop="name">@item.Question</span>
                         <i class="icon fa-solid fa-plus"></i>
                     </summary>
 
                     @if (item.AnswerBody is not null)
                     {
-                        <div class="body">
-                            @((MarkupString)item.AnswerBody)
+                        <div class="body" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <div itemprop="text">@((MarkupString)item.AnswerBody)</div>
 
                             @if (item.AnswerFooter is not null)
                             {

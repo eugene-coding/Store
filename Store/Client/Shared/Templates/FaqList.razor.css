@@ -32,6 +32,11 @@ summary {
     position: relative
 }
 
+    summary > span {
+        font-size: inherit;
+        font-weight: inherit;
+    }
+
 summary, .body {
     padding: 2rem 5.733rem 2rem 2.267rem;
 }

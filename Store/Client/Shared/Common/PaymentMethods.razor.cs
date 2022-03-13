@@ -1,9 +1,9 @@
 ﻿namespace Store.Client.Shared.Common;
 
-public partial class Payment
+public partial class PaymentMethods
 {
     private const string ImagesPath = "images/payment";
 
     [Inject]
-    public IStringLocalizer<Payment> Text { get; init; } = null!;
+    public IStringLocalizer<PaymentMethods> Text { get; init; } = null!;
 }

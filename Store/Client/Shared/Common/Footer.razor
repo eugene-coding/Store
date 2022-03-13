@@ -1,0 +1,55 @@
+﻿<footer>
+    <div class="container">
+        <div class="body">
+            <div>
+                <nav class="first-row">
+                    <ul class="menu">
+                        <li>
+                            <a href="Projects.Url">Проекты</a>
+                        </li>
+                        <li>
+                            <a href="@Catalog.Url">@CatalogText["HeadingTitle"]</a>
+                        </li>
+                        <li>
+                            <a href="@Company.Url">@CompanyText["HeadingTitle"]</a>
+                        </li>
+                        <li>
+                            <a href="@Contacts.Url">@ContactsText["HeadingTitle"]</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="second-row">
+                    <button>
+                        <i class="subscribe-icon fa-regular fa-paper-plane"></i>
+                        <span>Подписаться на рассылку</span>
+                    </button>
+                </div>
+            </div>
+
+                <address>
+                    <div>
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <a class="phone" href="tel:@StoreSettings["Phone"]">@StoreSettings["Phone"]</a>
+                            <button class="request-call">Заказать звонок</button>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fa-regular fa-envelope"></i>
+                        <a href="mailto:@StoreSettings["Email"]">@StoreSettings["Email"]</a>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>@($"{StoreSettings["City"]}, {StoreSettings["Street"]}")</span>
+                    </div>
+                </address>
+        </div>
+
+        <div class="bottom">
+            <small>@Copyright</small>
+            <a href="@Policy.Url">@PolicyText["HeadingTitle"]</a>
+            <PaymentMethods />
+        </div>
+    </div>
+</footer>

@@ -7,5 +7,6 @@ global using Store.Client.Pages.Company;
 global using Store.Client.Shared.Layouts;
 global using Store.Client.Resources;
 global using Store.Shared.Entities;
+global using Store.Shared.Services;
 
 global using Breadcrumb = Store.Client.Shared.Common.Breadcrumb;

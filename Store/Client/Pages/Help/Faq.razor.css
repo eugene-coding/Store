@@ -1,0 +1,37 @@
+﻿.description {
+    margin-bottom: 2.333rem;
+}
+
+.ask {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    background-color: #fafafa;
+    padding: 2rem 2.267rem;
+    margin: 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ask__icon {
+    height: 46px;
+    margin-right: 30px;
+    color: var(--main-theme-color);
+}
+
+.ask__button {
+    margin-left: 40px;
+    white-space: nowrap;
+}
+
+.ask__text {
+    margin: 0;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+@media (max-width: 1200px){
+    .ask__icon {
+        display: none;
+    }
+}

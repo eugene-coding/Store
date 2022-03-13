@@ -7,6 +7,8 @@ public class Faq
     public string AnswerBody { get; init; } = null!;
     public string? AnswerFooter { get; init; }
 
+    public bool ShowInFaqBlock { get; init; }
+
     public int SortOrder { get; init; }
     public bool Enabled { get; init; }
 }

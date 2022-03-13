@@ -1,0 +1,13 @@
+﻿<PageHeader Title=@Text["HeadingTitle"] Breadcrumbs=_breadcrumbs />
+
+<div class="content right">
+    <div class="description">@((MarkupString)Text["Description"].ToString())</div>
+
+    <FaqList Items=_questions />
+
+    <div class="ask">
+        <i class="ask__icon fa-regular fa-circle-question"></i>
+        <p class="ask__text">@Text["DidntFindAnswer"]</p>
+        <button class="main ask__button">@Text["Ask"]</button>
+    </div>
+</div>

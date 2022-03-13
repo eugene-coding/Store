@@ -1,0 +1,13 @@
+﻿@if (_socials is not null && _socials.Count > 0)
+{
+    <ul class="social no-style">
+        @foreach (var social in _socials)
+        {
+            <li>
+                <a class="@social.Key" href="@social.Value" rel="nofollow noopener" target="_blank">
+                    <i class="fa-brands fa-@social.Key"></i>
+                </a>
+            </li>
+        }
+    </ul>
+}

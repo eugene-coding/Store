@@ -12,5 +12,7 @@ builder.Services.AddLocalization();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 builder.Services.AddScoped<IFaqService, FaqService>();
+builder.Services.AddScoped<ISocialService, SocialService>();
+
 
 await builder.Build().RunAsync();

@@ -177,7 +177,7 @@ section {
 
 
 ul {
-    list-style-type: "—   ";
+    list-style-type: "—  ";
 }
 
     ol.no-style, ul.no-style {
@@ -185,6 +185,14 @@ ul {
         margin: 0;
         padding: 0;
     }
+
+    ol.no-style li, ul.no-style li {
+        padding-left: 0;
+    }
+
+li {
+    padding-left: 8px;
+}
 
 .border-bottom {
     border-bottom: var(--border);

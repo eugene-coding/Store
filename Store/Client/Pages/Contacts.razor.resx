@@ -122,6 +122,7 @@
   </data>
   <data name="Alt" xml:space="preserve">
     <value>Офис компании {0} по производству светодиодных акриловых фигур</value>
+    <comment>0 - Company name</comment>
   </data>
   <data name="Ask" xml:space="preserve">
     <value>Задать вопрос</value>

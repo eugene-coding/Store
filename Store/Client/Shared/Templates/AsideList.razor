@@ -1,0 +1,18 @@
+﻿@if(Items is not null)
+{
+    <ul class="no-style">
+        @foreach(var item in Items)
+        {
+            <li>
+                @if (Navigation.ToBaseRelativePath(Navigation.Uri) == item.Url.ToString())
+                {
+                    <b>@item.Name</b>
+                }
+                else
+                {
+                    <a href="@item.Url">@item.Name</a>  
+                }
+            </li>
+        }
+    </ul>
+}

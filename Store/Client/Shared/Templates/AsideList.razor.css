@@ -1,0 +1,31 @@
+﻿ul {
+    border: 1px solid #e5e5e5;
+    border-radius: var(--border-radius);
+}
+
+    ul li:not(:first-of-type) {
+        border-top: 1px solid #e5e5e5;
+    }
+
+    ul li > * {
+        color: #333;
+        padding: 17px 47px 16px 23px;
+        display: block;
+    }
+
+        ul li > *::before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: -1px;
+            top: 24px;
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            background-color: var(--main-theme-color);
+            z-index: 2;
+            opacity: 0;
+            transition: opacity .3s ease;
+            border-radius: 0 50% 50% 0;
+            width: 3px;
+        }

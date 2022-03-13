@@ -22,6 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\RequisitesSettings.Designer.cs">
+      <DependentUpon>RequisitesSettings.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Resources\StoreSettings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -30,6 +35,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\RequisitesSettings.resx">
+      <LastGenOutput>RequisitesSettings.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\StoreSettings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StoreSettings.Designer.cs</LastGenOutput>

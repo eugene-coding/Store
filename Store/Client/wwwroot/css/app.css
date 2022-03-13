@@ -99,6 +99,33 @@ button, .button {
         background-color: transparent;
     }
 
+dl.tabled {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    dl.tabled dt, dl.tabled dd {
+        line-height: 21px;
+        padding: 8px;
+        border-top: 1px solid #ddd;
+        font-weight: 400;
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    dl.tabled dt {
+        flex: 0 0 40%;
+    }
+
+    dl.tabled dd {
+        flex: 0 0 60%;
+    }
+
+        dl.tabled dt:nth-of-type(odd), dl.tabled dd:nth-of-type(odd) {
+            background-color: #f8f8f8;
+        }
+
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
@@ -143,11 +170,11 @@ ul {
     list-style-type: "—   ";
 }
 
-ol.no-style, ul.no-style {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
+    ol.no-style, ul.no-style {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
 
 .border-bottom {
     border-bottom: var(--border);

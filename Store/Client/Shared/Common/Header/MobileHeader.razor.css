@@ -1,0 +1,45 @@
+﻿#mobile-header {
+    display: none;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 56px;
+    background-color: #f8f8f8;
+    color: #333;
+    box-shadow: 0 1px 0 #e5e5e5;
+    z-index:1000;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.phone, .mail {
+    color: #999
+}
+
+    .phone:hover, .mail:hover{
+        color: var(--main-theme-color);
+    }
+
+    .phone svg, .phone i {
+        margin-right: 10px;
+    }
+
+@media (max-width: 992px){
+    #mobile-header {
+        display: block;
+    }
+}
+
+
+.offset {
+    height: 56px;
+}

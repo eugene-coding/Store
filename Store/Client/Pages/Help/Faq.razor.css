@@ -2,6 +2,12 @@
     margin-bottom: 2.333rem;
 }
 
+a {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
 .ask {
     border: var(--border);
     border-radius: var(--border-radius);

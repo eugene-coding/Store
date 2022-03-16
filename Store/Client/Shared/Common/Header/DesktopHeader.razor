@@ -1,0 +1,39 @@
+﻿<div id="desktop-header" class="@(!Overlayed ? "overlayed" : null) container">
+    <div style="width:100%;">
+        <div class="top">
+            <nav>
+                <ul class="submenu no-style" style="display: flex">
+                    <li><a href="@Store.Client.Pages.Help.Faq.Url">@FaqText["HeadingTitle"]</a></li>
+                    <li><a href="@Payment.Url">@PaymentText["HeadingTitle"]</a></li>
+                    <li><a href="@Delivery.Url">@DeliveryText["HeadingTitle"]</a></li>
+                    <li><a href="@Warranty.Url">@WarrantyText["HeadingTitle"]</a></li>
+                </ul>
+            </nav>
+
+            <div style="display: flex; align-items: center;">
+                <a class="phone" href="tel:@StoreSettings["Phone"]">@StoreSettings["Phone"]</a>
+                <a class="mail" href="mailto:@StoreSettings["Email"]">@StoreSettings["Email"]</a>
+
+                <Social />  
+            </div>
+        </div>
+
+        <div class="bottom">
+            <a href="/">
+                <img src="/images/logo.svg" width="103" height="37" alt="Led Ice">
+            </a>
+
+            <nav>
+                <ul class="navigation no-style">
+                    <li><a href="@Projects.Url">@ProjectsText["HeadingTitle"]</a></li>
+              @*      <li><a href="@Catalog.Url">@CatalogText["HeadingTitle"]</a></li>*@
+                    <li><a href="@Help.Url">@HelpText["HeadingTitle"]</a></li>
+                    <li><a href="@Company.Url">@CompanyText["HeadingTitle"]</a></li>
+                    <li><a href="@Contacts.Url">@ContactsText["HeadingTitle"]</a></li>
+                </ul>
+            </nav>
+
+           @* <button class="main">Отправить проект</button>*@
+        </div>
+    </div>
+</div>

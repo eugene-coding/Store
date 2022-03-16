@@ -1,22 +1,25 @@
 ﻿using Store.Client.Data;
 
+using System.Net.Http.Json;
+
 using Faq = Store.Shared.Entities.Faq;
 
 namespace Store.Client.Services;
 
-public class FaqService : IFaqService
+internal sealed class FaqService : ServiceBase, IFaqService
 {
-    public IReadOnlyCollection<Faq> Get()
+    public FaqService(HttpClient client) : base(client)
     {
-        return MockDatabase.Questions;
     }
 
-    public IReadOnlyCollection<Faq> GetForBlock(int count)
+
+    public async Task<IReadOnlyCollection<Faq>> GetAsync()
     {
-        return MockDatabase.Questions
-            .Where(question => question.ShowInFaqBlock)
-            .OrderBy(question => question.SortOrder)
-            .Take(count)
-            .ToList();
+        return await Client.GetFromJsonAsync<IReadOnlyCollection<Faq>>("api/faq") ?? new List<Faq>();
+    }
+
+    public async Task<IReadOnlyCollection<Faq>> GetForBlockAsync(int count)
+    {
+        return await Client.GetFromJsonAsync<IReadOnlyCollection<Faq>>($"api/faq/block/{count}") ?? new List<Faq>();
     }
 }

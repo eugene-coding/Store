@@ -1,0 +1,150 @@
+﻿.product-thumb {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 4px;
+    overflow: hidden;
+    max-height: 600px;
+    position: relative;
+    padding-top: 67%;
+}
+
+    .product-thumb:hover {
+        box-shadow: 0 5px 20px rgb(0 0 0 / 10%);
+    }
+
+        .product-thumb:hover i {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .product-thumb:hover p {
+            opacity: .7;
+            visibility: visible;
+            max-height: 600px;
+            margin: 16px 0 0;
+        }
+
+        .product-thumb:hover .background {
+            background-color: #000;
+            opacity: .3;
+        }
+
+h3 {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 47px;
+    margin: 0;
+}
+
+.product-thumb header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.product-thumb i {
+    --fa-animation-duration: 2s;
+    color: #fff;
+    font-size: 22px;
+    margin-left: 40px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.product-thumb p {
+    color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    margin: 0;
+    max-height: 0;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border-radius: 4px;
+}
+
+
+.preview {
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(180deg,rgb(0 0 0 / 0%) 0,rgb(0 0 0 / 64%) 100%);
+    border-radius: 4px;
+    padding: 40px 80px;
+    width: 100%;
+}
+
+
+@media (max-width: 1024px) {
+    .preview {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+@media (max-width: 991px) {
+    .product-thumb {
+        padding-top: 100%;
+    }
+
+    h3 {
+        font-size: 18px;
+        line-height: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-thumb i {
+        font-size: 15px;
+    }
+
+    .product-thumb p {
+        margin-top: 10px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+@media (min-width: 601px) {
+    .product-thumb {
+        padding-top: 33%;
+    }
+}
+
+@media (max-width: 600px) {
+    .product-thumb {
+        width: 260px;
+    }
+
+        .product-thumb:hover {
+            max-height: 0;
+            margin: 0;
+        }
+
+            .product-thumb:hover i, .product-thumb:hover p {
+                opacity: 0;
+                visibility: hidden
+            }
+
+            .product-thumb:hover p {
+                max-height: 0;
+                margin: 0;
+            }
+
+        .product-thumb i {
+            margin-left: 15px;
+            font-size: 16px;
+        }
+
+
+    .preview {
+        padding: 20px;
+    }
+}

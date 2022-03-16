@@ -7,9 +7,9 @@
                         <li>
                             <a href="@Projects.Url">@ProjectsText["HeadingTitle"]</a>
                         </li>
-                        <li>
+                  @*      <li>
                             <a href="@Catalog.Url">@CatalogText["HeadingTitle"]</a>
-                        </li>
+                        </li>*@
                         <li>
                             <a href="@Help.Url">@HelpText["HeadingTitle"]</a>
                         </li>
@@ -22,11 +22,11 @@
                     </ul>
                 </nav>
 
-                <div class="second-row">
-                    <button>
+                <div class="second-row">@*
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <i class="subscribe-icon fa-regular fa-paper-plane"></i>
                         <span>Подписаться на рассылку</span>
-                    </button>
+                    </button>*@
 
                     <Social />
                 </div>

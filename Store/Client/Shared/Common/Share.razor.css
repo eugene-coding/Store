@@ -1,0 +1,39 @@
+﻿.plus-size {
+    font-size: 18px;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    margin: -6px;
+    padding: 0;
+}
+
+i {
+    font-size: 17px;
+    color: #666
+}
+
+    i:hover {
+        color: var(--link-interaction-color);
+    }
+
+a, button {
+    display: flex;
+}
+
+button {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+li {
+    margin: 6px;
+}
+
+.opened {
+    opacity: 1;
+    visibility: visible
+}

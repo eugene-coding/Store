@@ -121,27 +121,27 @@
     <value>Led Ice</value>
   </data>
   <data name="BankIdentificationCode" xml:space="preserve">
-    <value>041234567</value>
+    <value />
   </data>
   <data name="CheckingAccount" xml:space="preserve">
-    <value>99879420880090091122</value>
+    <value />
   </data>
   <data name="CorrespondingAccount" xml:space="preserve">
-    <value>90505350500000000123</value>
+    <value />
   </data>
   <data name="FullName" xml:space="preserve">
     <value>Led Ice</value>
   </data>
   <data name="LegalAddress" xml:space="preserve">
-    <value>Волгоград, ул. Миллицонера Буханцева 36</value>
+    <value>400120, область Волгоградская, город Волгоград, улица Милиционера Буханцева, дом 36</value>
   </data>
   <data name="PrimaryStateRegistrationNumber" xml:space="preserve">
-    <value>9911001123456</value>
+    <value>1153443022941</value>
   </data>
   <data name="TaxpayerIdentificationNumber" xml:space="preserve">
-    <value>7999001099</value>
+    <value>3460059859</value>
   </data>
   <data name="TaxRegistrationReasonCode" xml:space="preserve">
-    <value>999707007</value>
+    <value>346001001</value>
   </data>
 </root>

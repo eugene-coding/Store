@@ -1,0 +1,29 @@
+﻿@using System.Globalization
+<article>
+    <header>
+        <a href="catalog/@Product.Seo">
+            <img class="responsive" src="@Product.Image" alt="@Product.Name" />
+        </a>
+
+        <div class="info">
+            <span class="label">@Product.Sku</span>
+            <h2>
+                <a href="catalog/@Product.Seo">@Product.Name</a>
+            </h2>
+        </div>
+    </header>
+    
+    <div class="body">
+        @if(Product.Price > 0m)
+        {
+            <span class="price">@Product.FormatedPrice</span>
+            <a href="mailto:admin1@tdkatod.ru" class="button main buy">Заказать</a>
+        }
+        else
+        {
+            <span class="price">По запросу</span>
+            <a href="mailto:admin1@tdkatod.ru" class="button main buy">Узнать цену</a>
+        }
+    </div>
+</article>
+

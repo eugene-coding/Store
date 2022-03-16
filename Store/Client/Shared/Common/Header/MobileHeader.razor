@@ -1,0 +1,25 @@
+﻿<div id="mobile-header">
+    <div class="offset"></div>
+    <div class="fixed">
+        <div class="container">
+        <div style="display:flex;">
+            <button class="burger no-background" style="margin-right: 10px;" @onclick=Open>
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="/">
+               <img src="/images/logo.svg" width="103" height="37" alt="Led Ice" />  
+            </a>
+        </div>
+            <div>
+                <a class="phone" href="tel:@StoreSettings["Phone"]">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>@StoreSettings["Phone"]</span>
+                </a>
+
+                <a class="mail" style="margin: 0 20px;" href="mailto:@StoreSettings["Email"]">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

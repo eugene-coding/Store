@@ -1,5 +1,8 @@
-﻿namespace Store.Shared.Entities;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
+namespace Store.Shared.Entities;
+
+[Table("faq")]
 public class Faq
 {
     public int Id { get; init; }

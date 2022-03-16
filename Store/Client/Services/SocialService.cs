@@ -1,11 +1,22 @@
-﻿using Store.Client.Data;
+﻿using Store.Shared.Models;
+
+using System.Net.Http.Json;
 
 namespace Store.Client.Services;
 
-public class SocialService : ISocialService
+public sealed class SocialService : ISocialService
 {
-    public IReadOnlyCollection<Social> Get()
+    private readonly HttpClient _client; 
+
+    public SocialService(HttpClient client)
     {
-        return MockDatabase.Socials;
+        _client = client;
+    }
+
+    public async Task<IReadOnlyCollection<Social>> GetAsync()
+    {
+        var socials = await _client.GetFromJsonAsync<IReadOnlyCollection<Social>>("data/social.json");
+
+        return socials ?? new List<Social>();
     }
 }

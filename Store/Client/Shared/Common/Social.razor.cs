@@ -1,16 +1,16 @@
-﻿using Entity = Store.Shared.Entities;
+﻿using Models = Store.Shared.Models;
 
 namespace Store.Client.Shared.Common;
 
 public partial class Social
 {
-    private IReadOnlyCollection<Entity.Social>? _socials;
+    private IReadOnlyCollection<Models.Social>? _socials;
 
     [Inject]
     public ISocialService Service { get; init; } = null!;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        _socials = Service.Get();
+        _socials = await Service.GetAsync();
     }
 }

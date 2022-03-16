@@ -134,52 +134,6 @@ button {
     margin: var(--second-row-vertical-margin) var(--row-horizontal-margin);
 }
 
-address {
-    margin-bottom: 15px;
-}
-
-    address > div {
-        display: flex;
-        align-items: center;
-        margin: 15px 0;
-    }
-
-        address > div:first-child {
-            margin-top: 0;
-        }
-
-        address > div:last-child {
-            margin-bottom: 0;
-        }
-
-    address i, address svg {
-        margin-right: 15px;
-        height: 14px;
-        width: 14px;
-    }
-
-    address a, address span {
-        color: #fff;
-        font-size: 14px;
-        line-height: 21px;
-    }
-
-        address a:hover {
-            color: #999;
-        }
-
-.phone {
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 25px;
-}
-
-.request-call {
-    display: block;
-    width: 100%;
-    text-align: center;
-}
-
 @media (max-width: 1200px) {
     .body {
         flex-wrap: wrap;
@@ -216,8 +170,9 @@ address {
         justify-content: center
     }
 
-    address {
+    ::deep address {
         display: flex;
+        align-items:center;
         flex-direction: column;
     }
 }

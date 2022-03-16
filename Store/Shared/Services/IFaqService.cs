@@ -4,6 +4,6 @@ namespace Store.Shared.Services;
 
 public interface IFaqService
 {
-    IReadOnlyCollection<Faq> Get();
-    IReadOnlyCollection<Faq> GetForBlock(int count);
+    Task<IReadOnlyCollection<Faq>> GetAsync();
+    Task<IReadOnlyCollection<Faq>> GetForBlockAsync(int count);
 }

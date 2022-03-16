@@ -1,49 +1,47 @@
 ﻿using Entities = Store.Shared.Entities;
+using Product = Store.Shared.Entities.Product;
 
 namespace Store.Client.Data;
 
 public static class MockDatabase
 {
-    public static List<Entities.Faq> Questions { get; set; } = new()
+    public static List<Entities.Product> Products { get; set; } = new()
     {
-        new Entities.Faq()
+        new Product()
         {
-            Question = "Как часто нужно проходить повышение квалификации?",
-            AnswerBody = "<p>Для разных профессий законодательно установлена разная периодичность, но в основном не реже чем раз в 3 года.</p>",
-            AnswerFooter = "<button class=\"white\">Задать вопрос</button>",
-            ShowInFaqBlock = true,
-            Enabled = true
+            Name = "Вазон",
+            Description = "Длинное описание",
+            ShortDescription = "Короткое описание",
+            Sku = "207291",
+            Image = "https://allcorp3-demo.ru/upload/iblock/406/4068df42140e88e7fb62394620b16399.jpg",
+            Seo ="1"
+            
         },
-        new Entities.Faq()
+        new Product()
         {
-            Question = "Как часто нужно проходить повышение квалификации?",
-            AnswerBody = "<p>Для разных профессий законодательно установлена разная периодичность, но в основном не реже чем раз в 3 года.</p>",
-            AnswerFooter = "<button class=\"white\">Задать вопрос</button>",
-            ShowInFaqBlock = true,
-            Enabled = true
+            Name = "Новогодняя снежинка (большая)",
+            Description = "Длинное описание",
+            ShortDescription = "Короткое описание",
+            Sku = "Артикул",
+            Price = 12999m,
+            Image = "https://allcorp3-demo.ru/upload/iblock/406/4068df42140e88e7fb62394620b16399.jpg",
+            Seo = "2"
         },
-        new Entities.Faq()
+        new Product()
         {
-            Question = "Как часто нужно проходить повышение квалификации?",
-            AnswerBody = "<p>Для разных профессий законодательно установлена разная периодичность, но в основном не реже чем раз в 3 года.</p>",
-            AnswerFooter = "<button class=\"white\">Задать вопрос</button>",
-            ShowInFaqBlock = true,
-            Enabled = true
+            Name = "Новогодняя снежинка (RGB)",
+            Description = "Длинное описание",
+            ShortDescription = "Короткое описание",
+            Sku = "Артикул",
+            Seo = "3"
         },
-        new Entities.Faq()
+        new Product()
         {
-            Question = "Как часто нужно проходить повышение квалификации?",
-            AnswerBody = "<p>Для разных профессий законодательно установлена разная периодичность, но в основном не реже чем раз в 3 года.</p>",
-            AnswerFooter = "<button class=\"white\">Задать вопрос</button>",
-            ShowInFaqBlock = true,
-            Enabled = true
-        },
-        new Entities.Faq()
-        {
-            Question = "Как часто нужно проходить повышение квалификации?",
-            AnswerBody = "<p>Для разных профессий законодательно установлена разная периодичность, но в основном не реже чем раз в 3 года.</p>",
-            AnswerFooter = "<button class=\"white\">Задать вопрос</button>",
-            Enabled = true
+            Name = "Снеговик на пеньке",
+            Description = "Длинное описание",
+            ShortDescription = "Короткое описание",
+            Sku = "Артикул",
+            Seo = "4"
         }
     };
 }

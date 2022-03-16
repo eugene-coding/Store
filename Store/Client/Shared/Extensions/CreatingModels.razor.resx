@@ -125,7 +125,7 @@
 &lt;p&gt;Модель помогает нам в дальнейшем расчёте количества материала, а вам же позволяет увидеть конечный результат, не дожидаясь окончания производства&lt;/p&gt;</value>
   </data>
   <data name="FirstSubtitle" xml:space="preserve">
-    <value>Процесс создания</value>
+    <value>Пора начинать</value>
   </data>
   <data name="FirstTitle" xml:space="preserve">
     <value>Создаём &lt;abbr title="Three dimension" lang="en" &gt;3D&lt;/abbr&gt;-модель</value>
@@ -134,25 +134,24 @@
     <value>Светодиодный акриловый вазон</value>
   </data>
   <data name="SecondDescription" xml:space="preserve">
-    <value>&lt;p&gt;В этом разделе публикуем ответы на популярные вопросы. Не нашли ответов? Свяжитесь с нами по почте или телефону для консультации. Расскажем детали и подготовим индивидуальные условия сотрудничества&lt;/p&gt;</value>
+    <value>&lt;p&gt;Затем мы отдаём созданные чертёжи и визуализации в производство, где вручную начинается создание фигуры&lt;/p&gt;</value>
   </data>
   <data name="SecondSubtitle" xml:space="preserve">
-    <value />
+    <value>Создаём</value>
   </data>
   <data name="SecondTitle" xml:space="preserve">
-    <value>Крутые ли у нас модели?</value>
+    <value>Отдаём в производство</value>
   </data>
   <data name="ThirdAlt" xml:space="preserve">
     <value>Светящийся акриловый светодиодный вазон</value>
   </data>
   <data name="ThirdDescription" xml:space="preserve">
-    <value>&lt;p&gt;На основе вашего технического задания мы создаём &lt;abbr title="Three dimension" lang="en"&gt;3D&lt;/abbr&gt;-модель будущей фигуры&lt;/p&gt;
-&lt;p&gt;Модель помогает нам в дальнейшем расчёте количества материала, а вам же позволяет увидеть конечный результат, не дожидаясь окончания производства&lt;/p&gt;</value>
+    <value>&lt;p&gt;После создания каждая фигура проходит испытания на прочность, светопропускаемость и надёжность, чтобы она могла прослужить как можно дольше&lt;/p&gt;</value>
   </data>
   <data name="ThirdSubtitle" xml:space="preserve">
-    <value>Процесс создания</value>
+    <value>Отдаём результат</value>
   </data>
   <data name="ThirdTitle" xml:space="preserve">
-    <value>Ещё бы</value>
+    <value>Проверка и тестирование</value>
   </data>
 </root>

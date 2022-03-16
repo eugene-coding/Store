@@ -28,8 +28,8 @@ public partial class FaqBlock
         }
     }
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        _questions = Service.GetForBlock(3);
+        _questions = await Service.GetForBlockAsync(3);
     }
 }

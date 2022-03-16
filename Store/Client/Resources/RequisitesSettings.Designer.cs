@@ -70,7 +70,7 @@ namespace Store.Client.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 041234567.
+        ///   Ищет локализованную строку, похожую на .
         /// </summary>
         public static string BankIdentificationCode {
             get {
@@ -79,7 +79,7 @@ namespace Store.Client.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 99879420880090091122.
+        ///   Ищет локализованную строку, похожую на .
         /// </summary>
         public static string CheckingAccount {
             get {
@@ -88,7 +88,7 @@ namespace Store.Client.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 90505350500000000123.
+        ///   Ищет локализованную строку, похожую на .
         /// </summary>
         public static string CorrespondingAccount {
             get {
@@ -106,7 +106,7 @@ namespace Store.Client.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Волгоград, ул. Миллицонера Буханцева 36.
+        ///   Ищет локализованную строку, похожую на 400120, область Волгоградская, город Волгоград, улица Милиционера Буханцева, дом 36.
         /// </summary>
         public static string LegalAddress {
             get {
@@ -115,7 +115,7 @@ namespace Store.Client.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 9911001123456.
+        ///   Ищет локализованную строку, похожую на 1153443022941.
         /// </summary>
         public static string PrimaryStateRegistrationNumber {
             get {
@@ -124,7 +124,7 @@ namespace Store.Client.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 7999001099.
+        ///   Ищет локализованную строку, похожую на 3460059859.
         /// </summary>
         public static string TaxpayerIdentificationNumber {
             get {
@@ -133,7 +133,7 @@ namespace Store.Client.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 999707007.
+        ///   Ищет локализованную строку, похожую на 346001001.
         /// </summary>
         public static string TaxRegistrationReasonCode {
             get {

@@ -115,7 +115,7 @@ namespace Store.Client.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на +7 (995) 425-08-90.
+        ///   Ищет локализованную строку, похожую на +7 (8442) 43-80-50.
         /// </summary>
         public static string Phone {
             get {

@@ -1,0 +1,28 @@
+﻿<div class="project-block">
+    <section class="container">
+        <BlockHeader>
+            <Subtitle>@Text["Subtitle"]</Subtitle>
+            <Title>Проекты</Title>
+            <Description>@((MarkupString)Text["Description"].ToString())</Description>
+        </BlockHeader>
+
+        @if (_projects is not null)
+        {
+            @if (_projects.Count > 0)
+            {
+                <ul class="no-style">
+                    @foreach(var project in _projects)
+                    {
+                        <li>
+                            <ProjectThumb Project=project />
+                        </li> 
+                    }
+                </ul>
+            }
+        }
+        else
+        {
+            <Loading />
+        }
+    </section>
+</div>

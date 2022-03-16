@@ -23,7 +23,10 @@
                 <div class="col-md-6">
                     <div class="property">
                         <span class="label">@Text["Phone"]</span>
-                        <a href="tel:@StoreSettings["Phone"]">@StoreSettings["Phone"]</a>
+                        <a style="display: block" href="tel:@StoreSettings["Phone"]">@StoreSettings["Phone"]</a>
+                        <a style="display: block" href="tel:+7 (8442) 43-80-51">+7 (8442) 43-80-51</a>
+                         <a style="display: block" href="tel:+7 (938) 545-77-75">+7 (938) 545-77-75</a>
+                          <a style="display: block" href="tel:+7 (905) 333-22-32">+7 (905) 333-22-32</a>
                     </div>
 
                     <div class="property">
@@ -39,7 +42,7 @@
             <div class="description">@((MarkupString)Text["Description"].ToString())</div>
         }
 
-        <button class="white">@Text["Ask"]</button>
+@*        <button class="white">@Text["Ask"]</button>*@
     </div>
 
     <address class="right col-lg-6">

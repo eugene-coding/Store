@@ -21,6 +21,9 @@ public partial class Faq : IAsyncDisposable
     public IStringLocalizer<Faq> Text { get; init; } = null!;
 
     [Inject]
+    public IStringLocalizer<Contacts> ContactsText { get; init; } = null!;
+
+    [Inject]
     public IStringLocalizer<Help> HelpText { get; init; } = null!;
 
     [Inject]
@@ -33,8 +36,11 @@ public partial class Faq : IAsyncDisposable
             new Breadcrumb(HelpText["HeadingTitle"], Help.Url),
             new Breadcrumb(Text["HeadingTitle"], Url)
         };
+    }
 
-        _questions = Service.Get();
+    protected override async Task OnInitializedAsync()
+    {
+        _questions = await Service.GetForBlockAsync(3);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

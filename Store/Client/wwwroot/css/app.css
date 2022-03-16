@@ -64,7 +64,6 @@ button, .button {
     font-weight: 700;
     line-height: 20px;
     padding: 10px 20px;
-    display: flex;
 }
 
     button.no-style {

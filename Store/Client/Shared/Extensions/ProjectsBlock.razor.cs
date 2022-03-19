@@ -5,7 +5,10 @@ namespace Store.Client.Shared.Extensions;
 public partial class ProjectsBlock : IDisposable
 {
     private IReadOnlyList<Project>? _projects;
-    private PersistingComponentStateSubscription persistingSubscription;
+
+    private PersistingComponentStateSubscription _persistingSubscription;
+    private readonly string _persistingKey = "projectsBlock";
+    private static bool s_persisted = false;
 
     [Inject]
     public PersistentComponentState ApplicationState { get; init; } = null!;
@@ -22,11 +25,10 @@ public partial class ProjectsBlock : IDisposable
     
     protected override async Task OnInitializedAsync()
     {
-        persistingSubscription =
-                    ApplicationState.RegisterOnPersisting(PersistForecasts);
+        RegisterOnPersisting();
 
         if (!ApplicationState.TryTakeFromJson<IReadOnlyList<Project>>(
-            "projectsBlock", out var restored))
+            _persistingKey, out var restored))
         {
             _projects = await Service.GetWithoutImagesAsync(3);
         }
@@ -36,15 +38,25 @@ public partial class ProjectsBlock : IDisposable
         }
     }
 
-    private Task PersistForecasts()
+    private void RegisterOnPersisting()
     {
-        ApplicationState.PersistAsJson("projectsBlock", _projects);
+        if (!s_persisted)
+        {
+            _persistingSubscription = ApplicationState.RegisterOnPersisting(Persist);
+
+            s_persisted = true;
+        }
+    }
+
+    private Task Persist()
+    {
+        ApplicationState.PersistAsJson(_persistingKey, _projects);
 
         return Task.CompletedTask;
     }
 
     public void Dispose()
     {
-        persistingSubscription.Dispose();
+        _persistingSubscription.Dispose();
     }
 }

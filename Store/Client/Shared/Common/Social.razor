@@ -1,7 +1,7 @@
-﻿@if (_socials is not null && _socials.Count > 0)
+﻿@if (s_socials is not null && s_socials.Count > 0)
 {
     <ul class="social no-style">
-        @foreach (var social in _socials)
+        @foreach (var social in s_socials)
         {
             <li>
                 <a class="@social.Key" href="@social.Value" rel="nofollow noopener" target="_blank">

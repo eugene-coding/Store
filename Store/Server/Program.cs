@@ -16,9 +16,15 @@ services.AddControllersWithViews().AddJsonOptions(options =>
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 services.AddRazorPages();
 
+string connectionString = builder.Configuration.GetConnectionString("Store");
+ServerVersion serverVersion = ServerVersion.AutoDetect(connectionString);
+
 services.AddDbContextFactory<Context>(options =>
 {
-    options.UseMySql(builder.Configuration.GetConnectionString("Store"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("Store")));
+    options.UseMySql(connectionString, serverVersion, options =>
+    {
+        options.EnableRetryOnFailure();
+    });
 });
 
 services.AddScoped<IFaqService, FaqService>();

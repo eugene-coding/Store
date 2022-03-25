@@ -1,19 +1,14 @@
 ﻿.loading {
     text-align: center;
-    margin: 2rem 0.667rem;
+    padding: 2rem 0.667rem;
 }
 
-svg {
+.loading__icon {
     font-size: 1.4rem;
 }
 
-p {
-    font-size: 0.8rem;
+.loading__text {
     letter-spacing: 0.2667rem;
     text-transform: uppercase;
     margin: 0.667rem 0 0;
-}
-
-small {
-    font-size: 1rem;
 }

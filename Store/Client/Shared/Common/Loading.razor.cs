@@ -1,6 +1,6 @@
 ﻿namespace Store.Client.Shared.Common;
 
-public partial class Loading
+public sealed partial class Loading
 {
     [Inject]
     public IStringLocalizer<Loading> Text { get; init; } = null!;

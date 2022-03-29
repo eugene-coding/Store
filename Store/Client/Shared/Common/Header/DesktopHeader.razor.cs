@@ -20,9 +20,6 @@ public partial class DesktopHeader
     public IStringLocalizer<Delivery> DeliveryText { get; init; } = null!;
     
     [Inject] 
-    public IStringLocalizer<Catalog> CatalogText { get; init; } = null!;
-    
-    [Inject] 
     public IStringLocalizer<Warranty> WarrantyText { get; init; } = null!;
     
     [Inject] 

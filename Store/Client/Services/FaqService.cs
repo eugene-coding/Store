@@ -1,6 +1,4 @@
-﻿using Store.Client.Data;
-
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 
 using Faq = Store.Shared.Entities.Faq;
 
@@ -11,7 +9,6 @@ internal sealed class FaqService : ServiceBase, IFaqService
     public FaqService(HttpClient client) : base(client)
     {
     }
-
 
     public async Task<IReadOnlyCollection<Faq>> GetAsync()
     {

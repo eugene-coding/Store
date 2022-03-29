@@ -6,13 +6,12 @@ namespace Store.Server.Services;
 
 public sealed class SocialService : ISocialService
 {
+    private readonly NavigationManager _manager;
+
     public SocialService(NavigationManager manager)
     {
-        this.manager = manager;
+        _manager = manager;
     }
-
-    public NavigationManager manager { get; set; }
-
 
     public async Task<IReadOnlyCollection<Social>> GetAsync()
     {
@@ -20,7 +19,7 @@ public sealed class SocialService : ISocialService
 
         using (HttpClient _client = new())
         {
-            socials = await _client.GetFromJsonAsync<IReadOnlyCollection<Social>>($"{manager.BaseUri}/data/social.json");
+            socials = await _client.GetFromJsonAsync<IReadOnlyCollection<Social>>($"{_manager.BaseUri}/data/social.json");
         }
             
         return socials ?? new List<Social>();

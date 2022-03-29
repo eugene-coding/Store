@@ -9,9 +9,6 @@ public partial class Footer
     public IStringLocalizer<Projects> ProjectsText { get; init; } = null!;
 
     [Inject]
-    public IStringLocalizer<Catalog> CatalogText { get; init; } = null!;
-
-    [Inject]
     public IStringLocalizer<Company> CompanyText { get; init; } = null!;
 
     [Inject]

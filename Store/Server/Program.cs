@@ -49,7 +49,15 @@ else
 
 app.UseHttpsRedirection();
 app.UseBlazorFrameworkFiles();
-app.UseStaticFiles();
+
+app.UseStaticFiles(new StaticFileOptions()
+{
+    OnPrepareResponse = context =>
+    {
+        context.Context.Response.Headers["Cache-Control"] = "public, max-age=31536000, s-maxage=31536000, immutable";
+    }
+});
+
 app.UseRouting();
 
 app.MapRazorPages();

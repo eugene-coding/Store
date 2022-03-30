@@ -1,4 +1,4 @@
-﻿using Store.Shared.Models;
+﻿using Store.Shared.Entities;
 
 namespace Store.Shared.Services;
 

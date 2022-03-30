@@ -1,13 +1,27 @@
-﻿@if (s_socials is not null && s_socials.Count > 0)
+﻿@if (s_socials is not null)
 {
-    <ul class="social no-style">
-        @foreach (var social in s_socials)
-        {
-            <li>
-                <a class="@social.Key" href="@social.Value" rel="nofollow noopener" target="_blank">
-                    <i class="fa-brands fa-@social.Key"></i>
-                </a>
-            </li>
-        }
-    </ul>
+    @if (s_socials.Count > 0)
+    {
+        <ul class="@_class">
+            @foreach (var social in s_socials)
+            {
+                <li class="social__item">
+                    <a class="social__link social__link_@(social.Key.ToLower())" href="@social.Value" rel="nofollow noopener" target="_blank">
+                        @if (string.IsNullOrWhiteSpace(social.SvgIconCode))
+                        {
+                            @social.Key
+                        }
+                        else
+                        {
+                           <span class="social__icon">@((MarkupString)social.SvgIconCode)</span>
+                        }
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+}
+else
+{
+    <Loading />
 }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Store.Server.Data;
 
@@ -10,9 +11,10 @@ using Store.Server.Data;
 namespace Store.Server.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220330020659_AddedSocialTable")]
+    partial class AddedSocialTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,6 +173,9 @@ namespace Store.Server.Migrations
                     b.Property<bool>("Enabled")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<string>("FontAwesomeClass")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Key")
                         .IsRequired()
                         .HasColumnType("varchar(255)");
@@ -179,9 +184,6 @@ namespace Store.Server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0);
-
-                    b.Property<string>("SvgIconCode")
-                        .HasColumnType("longtext");
 
                     b.Property<string>("Value")
                         .IsRequired()

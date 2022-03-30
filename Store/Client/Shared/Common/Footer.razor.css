@@ -108,30 +108,8 @@ button {
     margin: var(--bottom-margin) calc(var(--bottom-margin) - var(--payment-item-margin));
 }
 
-::deep .social a {
-    background: #474747;
-    color: #a3a3a3
-}
-
-::deep .second-row .social {
+.second-row ::deep .social {
     margin: calc(var(--second-row-vertical-margin) - var(--social-item-margin)) calc(var(--row-horizontal-margin) - var(--social-item-margin))
-}
-
-::deep .social a:hover,
-::deep .social a:focus,
-::deep.social a:active {
-    opacity: 1;
-    color: #fff
-}
-
-    ::deep .social a:hover i,
-    ::deep .social a:focus i,
-    ::deep .social a:active i {
-        color: #fff;
-    }
-
-::deep .second-row .language {
-    margin: var(--second-row-vertical-margin) var(--row-horizontal-margin);
 }
 
 @media (max-width: 1200px) {
@@ -172,7 +150,7 @@ button {
 
     ::deep address {
         display: flex;
-        align-items:center;
+        align-items: center;
         flex-direction: column;
     }
 }

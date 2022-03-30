@@ -1,22 +1,18 @@
-﻿using Store.Shared.Models;
-
+﻿
 using System.Net.Http.Json;
 
 namespace Store.Client.Services;
 
-public sealed class SocialService : ISocialService
+internal sealed class SocialService : ServiceBase, ISocialService
 {
-    private readonly HttpClient _client; 
+    private const string Route = "api/social";
 
-    public SocialService(HttpClient client)
+    public SocialService(HttpClient client) : base(client)
     {
-        _client = client;
     }
 
     public async Task<IReadOnlyCollection<Social>> GetAsync()
     {
-        var socials = await _client.GetFromJsonAsync<IReadOnlyCollection<Social>>("data/social.json");
-
-        return socials ?? new List<Social>();
+        return await Client.GetFromJsonAsync<IReadOnlyCollection<Social>>(Route) ?? new List<Social>();
     }
 }

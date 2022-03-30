@@ -2,7 +2,61 @@
     --social-item-margin: 6px;
 }
 
-a {
+.social {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: calc(0px - var(--social-item-margin));
+    padding: 0;
+}
+
+.social_dark .social__link {
+    background: #474747;
+    color: #a3a3a3;
+}
+
+    .social_dark .social__link:hover,
+    .social_dark .social__link:focus,
+    .social_dark .social__link:active {
+        opacity: 1;
+        color: #fff;
+    }
+
+        .social_dark .social__link:hover .social__icon,
+        .social_dark .social__link:focus .social__icon,
+        .social_dark .social__link:active .social__icon {
+            fill: #fff;
+        }
+
+.social_dark .social__icon {
+    fill: #a3a3a3;
+}
+
+.social_light. social__link {
+    background: none;
+    color: #fff;
+}
+
+    .social_light .social__link:hover,
+    .social_light .social__link:focus,
+    .social_light .social__link:active {
+        /*opacity: 1;
+        color: #fff;*/
+    }
+
+        .social_light .social__link:hover .social__icon,
+        .social_light .social__link:focus .social__icon,
+        .social_light .social__link:active .social__icon {
+            fill: var(--main-theme-color);
+        }
+
+.social__item {
+    margin: var(--social-item-margin);
+    padding: 0;
+}
+
+.social__link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,25 +67,19 @@ a {
     width: 33px;
 }
 
-    a:hover, a:focus, a:active {
+    .social__link:hover, .social__link:focus, .social__link:active {
         opacity: 0.8;
     }
 
-li {
-    margin: var(--social-item-margin);
-}
-
-ul {
+.social__icon {
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    list-style-type: none;
-    margin: calc(0px - var(--social-item-margin));
-    padding: 0;
+    width: 15px;
 }
-
 
 /* When adding new social networks, you need to add the corresponding background in a new class with the name of the social network */
-.instagram, .instagram:hover, .instagram:focus, .instagram:active {
+.social__link_instagram,
+.social__link_instagram:hover,
+.social__link_instagram:focus,
+.social__link_instagram:active {
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
 }

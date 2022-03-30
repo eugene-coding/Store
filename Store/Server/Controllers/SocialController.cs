@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 
-using Store.Shared.Models;
-
 namespace Store.Server.Controllers.Common;
 
 [ApiController]
@@ -15,7 +13,7 @@ public class SocialController : ControllerBase
         _service = service;
     }
 
-    public async Task<ActionResult<IReadOnlyCollection<Social>>> GetAsync()
+    public async Task<IActionResult> GetAsync()
     {
         return Ok(await _service.GetAsync());
     }

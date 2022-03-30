@@ -9,7 +9,7 @@ public sealed partial class Address
     public IStringLocalizer<StoreSettings> StoreSettings { get; init; } = null!;
 
     [Parameter]
-    public bool LightText { get; init; }
+    public bool LightStyle { get; init; }
 
     protected override void OnInitialized()
     {
@@ -18,7 +18,7 @@ public sealed partial class Address
 
     protected override void OnParametersSet()
     {
-        if (LightText)
+        if (LightStyle)
         {
             _class += " address_light";
         }

@@ -1,27 +1,47 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 
-using Store.Shared.Models;
+using Store.Client.Shared.Common;
+using Store.Server.Data;
+using Store.Shared.Entities;
 
 namespace Store.Server.Services;
 
-public sealed class SocialService : ISocialService
+internal sealed class SocialService : ServiceBase<Context>, ISocialService
 {
-    private readonly NavigationManager _manager;
-
-    public SocialService(NavigationManager manager)
+    public SocialService(IDbContextFactory<Context> context, IMemoryCache cache) : base(context, cache)
     {
-        _manager = manager;
     }
 
-    public async Task<IReadOnlyCollection<Social>> GetAsync()
+    public async Task<IReadOnlyCollection<Shared.Entities.Social>> GetAsync()
     {
-        IReadOnlyCollection<Social>? socials;
+        //IReadOnlyCollection<Social> socials;
+        //string cacheKey = nameof(socials);
 
-        using (HttpClient _client = new())
-        {
-            socials = await _client.GetFromJsonAsync<IReadOnlyCollection<Social>>($"{_manager.BaseUri}/data/social.json");
+        //if (!Cache.TryGetValue(cacheKey, out socials))
+        //{
+        //    using (var context = Context.CreateDbContext())
+        //    {
+        //        socials = await context.Socials
+        //            .Where(requisite => requisite.Enabled)
+        //            .OrderBy(requisite => requisite.SortOrder)
+        //            .ToListAsync();
+        //    }
+
+        //    Cache.Set(cacheKey, socials, new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromMinutes(5)));
+        //}
+
+        //return socials;
+
+        using (var context = Context.CreateDbContext())
+{
+           var s = await context.Socials
+                .Where(requisite => requisite.Enabled)
+                .OrderBy(requisite => requisite.SortOrder)
+                .ToListAsync();
+
+            return (IReadOnlyCollection<Shared.Entities.Social>)s;
         }
-            
-        return socials ?? new List<Social>();
     }
 }

@@ -117,49 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AbbreviatedName" xml:space="preserve">
-    <value>Сокращённое наименование</value>
-  </data>
-  <data name="ActualAddress" xml:space="preserve">
-    <value>Фактический адрес</value>
-  </data>
-  <data name="BankIdentificationCode" xml:space="preserve">
-    <value>&lt;abbr title="Банковский идентификационный код"&gt;БИК&lt;/abbr&gt;</value>
-  </data>
-  <data name="CheckingAccount" xml:space="preserve">
-    <value>Расчётный счёт</value>
-  </data>
-  <data name="CorrespondingAccount" xml:space="preserve">
-    <value>Корреспондентский счёт</value>
-  </data>
   <data name="Description" xml:space="preserve">
     <value>&lt;p&gt;Ниже приведены реквизиты компании, в случае необходимости получения дополнительных документов: свидетельства о государственной регистрации, идентификационного номера налогоплательщика вы можете обратиться в бухгалтерию предприятия.&lt;/p&gt;</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Электронная почта</value>
-  </data>
-  <data name="FullName" xml:space="preserve">
-    <value>Полное наименование</value>
-  </data>
   <data name="HeadingTitle" xml:space="preserve">
     <value>Реквизиты</value>
-  </data>
-  <data name="LegalAddress" xml:space="preserve">
-    <value>Юридический адрес</value>
-  </data>
-  <data name="Phone" xml:space="preserve">
-    <value>Телефон</value>
-  </data>
-  <data name="PrimaryStateRegistrationNumber" xml:space="preserve">
-    <value>&lt;abbr title="Основной государственный регистрационный номер"&gt;ОГРН&lt;/abbr&gt;</value>
-  </data>
-  <data name="Site" xml:space="preserve">
-    <value>Сайт</value>
-  </data>
-  <data name="TaxpayerIdentificationNumber" xml:space="preserve">
-    <value>&lt;abbr title="Идентификационный номер налогоплательщика"&gt;ИНН&lt;/abbr&gt;</value>
-  </data>
-  <data name="TaxRegistrationReasonCode" xml:space="preserve">
-    <value>&lt;abbr title="Код причины постановки на учет"&gt;КПП&lt;/abbr&gt;</value>
   </data>
 </root>

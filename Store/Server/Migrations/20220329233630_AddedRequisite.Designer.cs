@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Store.Server.Data;
 
@@ -10,9 +11,10 @@ using Store.Server.Data;
 namespace Store.Server.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220329233630_AddedRequisite")]
+    partial class AddedRequisite
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,11 +141,11 @@ namespace Store.Server.Migrations
 
                     b.Property<string>("Key")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("SortOrder")
                         .ValueGeneratedOnAdd()
@@ -156,7 +158,7 @@ namespace Store.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Key")
+                    b.HasIndex("Name")
                         .IsUnique();
 
                     b.ToTable("Requisites");

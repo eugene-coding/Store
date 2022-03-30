@@ -30,6 +30,7 @@ services.AddDbContextFactory<Context>(options =>
 services.AddScoped<IFaqService, FaqService>();
 services.AddScoped<IProjectService, ProjectService>();
 services.AddScoped<ISocialService, SocialService>();
+services.AddScoped<IRequisiteService, RequisiteService>();
 
 var app = builder.Build();
 

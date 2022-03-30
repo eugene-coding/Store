@@ -1,4 +1,6 @@
-﻿namespace Store.Client.Pages;
+﻿using Entity = Store.Shared.Entities;
+
+namespace Store.Client.Pages;
 
 [Route(Url)]
 [Layout(typeof(BodyContainer))]
@@ -6,10 +8,11 @@ public partial class Projects : IDisposable
 {
     public const string Seo = "projects";
     public const string Url = Seo;
+    private const string PersistingKey = "projectsBlock";
 
-    private List<Breadcrumb> _breadcrumbs = null!;
-    private IReadOnlyList<Store.Shared.Entities.Project>? _projects;
-    private PersistingComponentStateSubscription persistingSubscription;
+    private PersistingComponentStateSubscription _persistingSubscription;
+    private IReadOnlyList<Breadcrumb>? _breadcrumbs;
+    private IReadOnlyList<Entity.Project>? _projects;
 
     [Inject]
     public IStringLocalizer<Projects> Text { get; init; } = null!;
@@ -22,7 +25,7 @@ public partial class Projects : IDisposable
 
     protected override void OnInitialized()
     {
-        _breadcrumbs = new()
+        _breadcrumbs = new List<Breadcrumb>()
         {
             new Breadcrumb(Text["HeadingTitle"], Url)
         };
@@ -30,11 +33,11 @@ public partial class Projects : IDisposable
 
     protected override async Task OnInitializedAsync()
     {
-        persistingSubscription =
-                    ApplicationState.RegisterOnPersisting(PersistForecasts);
+        _persistingSubscription =
+                    ApplicationState.RegisterOnPersisting(PersistProjects);
 
-        if (!ApplicationState.TryTakeFromJson<IReadOnlyList<Store.Shared.Entities.Project>>(
-            "projectsBlock", out var restored))
+        if (!ApplicationState.TryTakeFromJson<IReadOnlyList<Entity.Project>>(
+            PersistingKey, out var restored))
         {
             _projects = await Service.GetAsync();
         }
@@ -44,15 +47,15 @@ public partial class Projects : IDisposable
         }
     }
 
-    private Task PersistForecasts()
+    private Task PersistProjects()
     {
-        ApplicationState.PersistAsJson("projectsBlock", _projects);
+        ApplicationState.PersistAsJson(PersistingKey, _projects);
 
         return Task.CompletedTask;
     }
 
     public void Dispose()
     {
-        persistingSubscription.Dispose();
+        _persistingSubscription.Dispose();
     }
 }

@@ -3,35 +3,22 @@
 <div class="content right">
     <div>@((MarkupString)Text["Description"].ToString())</div>
     
-    <dl class="tabled">
-        <dt>@Text["FullName"]</dt>
-        <dd>@RequisitesSettings["FullName"]</dd>
-        
-        <dt>@Text["AbbreviatedName"]</dt>
-        <dd>@RequisitesSettings["AbbreviatedName"]</dd>
-        
-        <dt>@((MarkupString)Text["TaxpayerIdentificationNumber"].ToString())</dt>
-        <dd>@RequisitesSettings["TaxpayerIdentificationNumber"]</dd>
-        
-        <dt>@((MarkupString)Text["TaxRegistrationReasonCode"].ToString())</dt>
-        <dd>@RequisitesSettings["TaxRegistrationReasonCode"]</dd>
-        
-        <dt>@((MarkupString)Text["PrimaryStateRegistrationNumber"].ToString())</dt>
-        <dd>@RequisitesSettings["PrimaryStateRegistrationNumber"]</dd>
-        
-        <dt>@Text["LegalAddress"]</dt>
-        <dd>@RequisitesSettings["LegalAddress"]</dd>
-        
-        <dt>@Text["ActualAddress"]</dt>
-        <dd>@StoreSettings["City"], @StoreSettings["Street"]</dd>
-        
-        <dt>@Text["Phone"]</dt>
-        <dd><a href="tel:@StoreSettings["Phone"]">@StoreSettings["Phone"]</a></dd>
-        
-        <dt>@Text["Email"]</dt>
-        <dd><a href="mailto:@StoreSettings["Email"]">@StoreSettings["Email"]</a></dd>
-        
-        <dt>@Text["Site"]</dt>
-        <dd><a href="@Navigation.BaseUri">@Navigation.BaseUri</a></dd>
-    </dl>
+
+    @if (_requisites is not null)
+    {
+        if (_requisites.Count > 0)
+        {
+            <dl class="tabled">
+                @foreach (var requisite in _requisites)
+                {
+                    <dt>@((MarkupString)requisite.Name)</dt>
+                    <dd>@((MarkupString)requisite.Value)</dd>
+                }
+            </dl>
+        }
+    }
+    else
+    {
+        <Loading />
+    }
 </div>

@@ -10,6 +10,7 @@ public class Context : DbContext
 
     public DbSet<Project> Projects => Set<Project>();
     public DbSet<Faq> Faq => Set<Faq>();
+    public DbSet<Requisite> Requisites => Set<Requisite>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -21,6 +22,16 @@ public class Context : DbContext
 
         project
             .Property(project => project.SortOrder)
+            .HasDefaultValue(0);
+
+        var requisite = builder.Entity<Requisite>();
+
+        requisite
+            .HasIndex(requisite => requisite.Key)
+            .IsUnique();
+
+        requisite
+            .Property(requisite => requisite.SortOrder)
             .HasDefaultValue(0);
     }
 }

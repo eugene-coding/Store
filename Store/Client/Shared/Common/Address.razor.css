@@ -2,7 +2,9 @@
     color: #fff;
 }
 
-    .address_light a.address-item__text:hover {
+    .address_light a.address-item__text:hover,
+    .address_light a.address-item__text:focus,
+    .address_light a.address-item__text:active {
         color: #999;
     }
 
@@ -41,6 +43,9 @@
     line-height: 25px;
 }
 
-a.address-item__text:hover {
+a.address-item__text:hover,
+a.address-item__text:focus,
+a.address-item__text:active 
+{
     color: var(--main-theme-color);
 }

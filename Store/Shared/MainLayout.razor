@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using Store.Pages
+@inherits LayoutComponentBase
 
 <PageTitle>Store</PageTitle>
 
@@ -17,19 +18,15 @@
     </header>
 
     <footer>
-        <ul class="app-distributors">
+        <ul class="badges no-default">
+            <li class="badges__item">
+                <a class="badges__link">
+                    <img class="badges__image" src="/images/badges/google-play.svg" />
+                </a>
+            </li>
         </ul>
 
-        <ul class="social no-default">
-            @foreach (var item in socials)
-            {
-                <li class="social__item">
-                    <a class="social__link" href="@item.Uri" target="_blank" title="@item.Name">
-                        <img class="social__icon" src="@item.Icon" alt="@item.Name" />
-                    </a>
-                </li>
-            }
-        </ul>
+        <Social />
     </footer>
 </div>
 
@@ -53,29 +50,28 @@
     }
 
     article {
-        display: flex;
-        height: 100vh;
         align-items: center;
+        width:100%;
     }
 
     main {
         width: calc(100% - var(--menu-width));
         float: right;
-    background: url(images/background.png);
-    background-size: cover;
-    min-width: 1;
-    min-height: 100vh;
+        background: url(images/background.png);
+        background-size: cover;
+        min-height: 100vh;
+        display:flex;
+        align-items: center;
     }
 
     .side {
         position: fixed;
         height: 100vh;
         width: var(--menu-width);
-
         padding: 30px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     ul.no-default {
@@ -86,20 +82,19 @@
 
     .menu {
         font-size: 1.2rem;
-        /*line-height: 60px;*/
     }
 
     .menu__item {
         margin: 10px 0
     }
 
-    .menu__item:first-child {
-        margin-top: 0;
-    }
+        .menu__item:first-child {
+            margin-top: 0;
+        }
 
-    .menu__item:last-child {
-        margin-bottom: 0;
-    }
+        .menu__item:last-child {
+            margin-bottom: 0;
+        }
 
     .menu__link {
         color: var(--main-theme-color);
@@ -110,33 +105,32 @@
         text-decoration: none;
     }
 
-    .menu__link:before{
-        content: "";
-        position: absolute;
-        width: 94px;
-        height: 3px;
-        left: 5px;
-        top: calc(50% - (3px / 2));
-        background-color: #444343;
+        .menu__link:before {
+            content: "";
+            position: absolute;
+            width: 94px;
+            height: 3px;
+            left: 5px;
+            top: calc(50% - (3px / 2));
+            background-color: #444343;
+            opacity: 0;
+            visibility: hidden;
+        }
 
-        opacity:0;
-        visibility: hidden;
-    }
+        .menu__link:hover,
+        .menu__link:active,
+        .menu__link:focus {
+            color: #797878;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
 
-    .menu__link:hover,
-    .menu__link:active,
-    .menu__link:focus {
-        color: #797878;
-        font-size: 1.5rem;
-        font-weight: 700;
-    }
-
-    .menu__link:hover:before,
-    .menu__link:active:before,
-    .menu__link:focus:before {
-        opacity: 1;
-        visibility: visible;
-    }
+            .menu__link:hover:before,
+            .menu__link:active:before,
+            .menu__link:focus:before {
+                opacity: 1;
+                visibility: visible;
+            }
 
     .menu__link_active {
         color: white;
@@ -147,6 +141,10 @@
         justify-content: space-between;
     }
 
+    .logo {
+        width: 100%;
+    }
+
     .social__icon {
         height: 22px;
     }
@@ -155,26 +153,12 @@
 @code {
     Link[] menu =
     {
-        new Link("Компания", ""),
-        new Link("Проекты", ""),
-        new Link("Каталог", ""),
-        new Link("Оплата", ""),
-        new Link("Доставка", ""),
-        new Link("Контакты", ""),
-        new Link("Помощь", ""),
+        new Link("Компания", @Pages.Index.RelativeUrl),
+        new Link("Контакты", @Contacts.RelativeUrl),
     };
 
-    const string SocialIconsPath = "images/icons/socials/";
-
-    Social[] socials =
-    {
-        new Social("ВКонтакте", "", SocialIconsPath + "vk.svg"),
-        new Social("Одноклассники", "", SocialIconsPath + "ok.svg"),
-        new Social("Телеграм", "", SocialIconsPath + "telegram.svg"),
-        new Social("YouTube", "", SocialIconsPath + "youtube.svg"),
-        new Social("RuTube", "", SocialIconsPath + "rutube.svg")
-    };
+    
 
     record Link(string Name, string Uri);
-    record Social(string Name, string Uri, string Icon);
+    
 }

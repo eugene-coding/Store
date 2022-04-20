@@ -1,14 +1,23 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+using Microsoft.EntityFrameworkCore;
 
 using Store.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
 
 // Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+services.AddRazorPages();
+services.AddServerSideBlazor();
+
+var connectionString = builder.Configuration.GetConnectionString("Database");
+var serverVersion = ServerVersion.AutoDetect(connectionString);
+services.AddDbContextFactory<Database>(options =>
+{
+    options.UseMySql(connectionString, serverVersion, options =>
+    {
+        options.EnableRetryOnFailure();
+    });
+});
 
 var app = builder.Build();
 

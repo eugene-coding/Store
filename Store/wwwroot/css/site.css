@@ -1,7 +1,19 @@
-@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+:root {
+    --main-theme-color: #807F7F;
+}
+
+* {
+    transition: all ease-in-out .15s;
+}
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--main-theme-color);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: 100;
+}
+
+body {
+    background-color: #201F1F;
 }
 
 h1:focus {

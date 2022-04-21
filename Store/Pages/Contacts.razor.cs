@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Localization;
 
 namespace Store.Pages;
 
@@ -6,4 +7,7 @@ namespace Store.Pages;
 public partial class Contacts
 {
     public const string RelativeUrl = "contacts";
+
+    [Inject]
+    public IStringLocalizer<Contacts> Text { get; init; } = default!;
 }

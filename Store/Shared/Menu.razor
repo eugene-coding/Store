@@ -1,0 +1,27 @@
+﻿@if (items is not null)
+{
+    @if (items.Length > 0)
+    {
+        <nav>
+            <ul class="menu no-default">
+                @foreach (var item in items)
+                {
+                    <li class="menu__item">
+                        @if (!IsRelativeUrlActive(item.Url)) 
+                        {
+                            <a class="menu__link" href="@item.Url">@item.Name</a>
+                        }
+                        else
+                        {
+                            <span class="menu__link menu__link_active">@item.Name</span>
+                        }
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+}
+else
+{
+    <Loading />
+}

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Localization;
 
 namespace Store.Pages;
 
@@ -6,4 +7,7 @@ namespace Store.Pages;
 public partial class Index
 {
     public const string RelativeUrl = "";
+
+    [Inject]
+    public IStringLocalizer<Index> Text { get; init; } = default!;
 }

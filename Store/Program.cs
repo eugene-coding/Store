@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 
 using Store.Data;
+using Store.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -8,6 +9,7 @@ var services = builder.Services;
 // Add services to the container.
 services.AddRazorPages();
 services.AddServerSideBlazor();
+services.AddLocalization();
 
 var connectionString = builder.Configuration.GetConnectionString("Database");
 var serverVersion = ServerVersion.AutoDetect(connectionString);
@@ -19,7 +21,17 @@ services.AddDbContextFactory<Database>(options =>
     });
 });
 
+services.AddScoped<ISocialService, SocialService>();
+services.AddScoped<IBadgeService, BadgeService>();
+
 var app = builder.Build();
+
+//using (var scope = app.Services.CreateScope())
+//{
+//    var serviceProvider = scope.ServiceProvider;
+
+//    SeedData.Initialize(serviceProvider);
+//}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

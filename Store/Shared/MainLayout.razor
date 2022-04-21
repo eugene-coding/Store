@@ -7,24 +7,11 @@
     <header>
         <img class="logo" src="/images/logo.svg" alt="Store" />
 
-        <ul class="menu no-default">
-            @foreach (var item in menu)
-            {
-                <li class="menu__item">
-                    <a class="menu__link" href="@item.Uri">@item.Name</a>
-                </li>
-            }
-        </ul>
+        <Menu />
     </header>
 
     <footer>
-        <ul class="badges no-default">
-            <li class="badges__item">
-                <a class="badges__link">
-                    <img class="badges__image" src="/images/badges/google-play.svg" />
-                </a>
-            </li>
-        </ul>
+        <Badges />
 
         <Social />
     </footer>
@@ -35,130 +22,3 @@
         @Body
     </article>
 </main>
-
-<style>
-    * {
-        --menu-width: 400px;
-    }
-
-    footer {
-        padding: 0 15%;
-    }
-
-    .logo {
-        padding: 0 15%;
-    }
-
-    article {
-        align-items: center;
-        width:100%;
-    }
-
-    main {
-        width: calc(100% - var(--menu-width));
-        float: right;
-        background: url(images/background.png);
-        background-size: cover;
-        min-height: 100vh;
-        display:flex;
-        align-items: center;
-    }
-
-    .side {
-        position: fixed;
-        height: 100vh;
-        width: var(--menu-width);
-        padding: 30px 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    ul.no-default {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .menu {
-        font-size: 1.2rem;
-    }
-
-    .menu__item {
-        margin: 10px 0
-    }
-
-        .menu__item:first-child {
-            margin-top: 0;
-        }
-
-        .menu__item:last-child {
-            margin-bottom: 0;
-        }
-
-    .menu__link {
-        color: var(--main-theme-color);
-        display: block;
-        padding-left: 5.4rem;
-        padding-right: 1.4rem;
-        position: relative;
-        text-decoration: none;
-    }
-
-        .menu__link:before {
-            content: "";
-            position: absolute;
-            width: 94px;
-            height: 3px;
-            left: 5px;
-            top: calc(50% - (3px / 2));
-            background-color: #444343;
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .menu__link:hover,
-        .menu__link:active,
-        .menu__link:focus {
-            color: #797878;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-            .menu__link:hover:before,
-            .menu__link:active:before,
-            .menu__link:focus:before {
-                opacity: 1;
-                visibility: visible;
-            }
-
-    .menu__link_active {
-        color: white;
-    }
-
-    .social {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .logo {
-        width: 100%;
-    }
-
-    .social__icon {
-        height: 22px;
-    }
-</style>
-
-@code {
-    Link[] menu =
-    {
-        new Link("Компания", @Pages.Index.RelativeUrl),
-        new Link("Контакты", @Contacts.RelativeUrl),
-    };
-
-    
-
-    record Link(string Name, string Uri);
-    
-}

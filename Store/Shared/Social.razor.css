@@ -1,0 +1,8 @@
+﻿.social {
+    display: flex;
+    justify-content: space-between;
+}
+
+.social__icon {
+    height: 22px;
+}

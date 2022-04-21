@@ -28,6 +28,12 @@ iframe {
     border-radius: 10px;
 }
 
+ul.no-default {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;

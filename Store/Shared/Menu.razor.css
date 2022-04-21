@@ -1,0 +1,39 @@
+﻿.menu {
+    font-size: 1.2rem;
+}
+
+.menu__item {
+    margin: 10px 0
+}
+
+    .menu__item:first-child {
+        margin-top: 0;
+    }
+
+    .menu__item:last-child {
+        margin-bottom: 0;
+    }
+
+.menu__link {
+    color: var(--main-theme-color);
+    display: block;
+    line-height: 2rem;
+    padding-left: 5.4rem;
+    padding-right: 1.4rem;
+    position: relative;
+    text-decoration: none;
+}
+
+    .menu__link:hover,
+    .menu__link:active,
+    .menu__link:focus {
+        color: #797878;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+.menu__link_active {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white !important;
+}

@@ -1,25 +1,20 @@
-﻿<ul class="social no-default">
-    @foreach (var item in socials)
+﻿@if (socials is not null)
+{
+    @if (socials.Count > 0)
     {
-        <li class="social__item">
-            <a class="social__link" href="@item.Uri" target="_blank" title="@item.Name">
-                <img class="social__icon" src="@item.Icon" alt="@item.Name" />
-            </a>
-        </li>
+        <ul class="social no-default">
+            @foreach (var item in socials)
+            {
+                <li>
+                    <a href="@item.Url" target="_blank" title="@item.Title">
+                        <img class="social__icon" src="@(SocialIconsPath + item.Icon)" alt="@item.Title" />
+                    </a>
+                </li>
+            }
+        </ul>
     }
-</ul>
-
-@code {
-    const string SocialIconsPath = "images/icons/socials/";
-
-    SocialItem[] socials =
-    {
-        new SocialItem("ВКонтакте", "", SocialIconsPath + "vk.svg"),
-        new SocialItem("Одноклассники", "", SocialIconsPath + "ok.svg"),
-        new SocialItem("Телеграм", "", SocialIconsPath + "telegram.svg"),
-        new SocialItem("YouTube", "", SocialIconsPath + "youtube.svg"),
-        new SocialItem("RuTube", "", SocialIconsPath + "rutube.svg")
-    };
-
-    record SocialItem(string Name, string Uri, string Icon);
+}
+else
+{
+    <Loading />
 }

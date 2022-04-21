@@ -1,0 +1,20 @@
+﻿@if (badges is not null)
+{
+    @if (badges.Count > 0)
+    {
+        <ul class="badges no-default">
+            @foreach (var badge in badges)
+            {
+                <li>
+                    <a href="@badge.Url" target="_blank" title="@badge.Title" >
+                        <img class="badges__image" src="@(BadgeImagesPath + badge.Image)" alt="@badge.Title" />
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+}
+else
+{
+    <Loading />
+}

@@ -1,0 +1,20 @@
+﻿@if (socials is not null)
+{
+    @if (socials.Count > 0)
+    {
+        <ul class="social no-default">
+            @foreach (var item in socials)
+            {
+                <li>
+                    <a href="@item.Url" target="_blank" title="@item.Title">
+                        <img class="social__icon" src="@(SocialIconsPath + item.Icon)" alt="@item.Title" />
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+}
+else
+{
+    <Loading />
+}

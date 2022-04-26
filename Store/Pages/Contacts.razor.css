@@ -1,0 +1,57 @@
+﻿.label {
+    color: #999;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+a {
+    color: inherit;
+}
+
+    a:hover, a:focus, a:active {
+        color: var(--main-teme-color);
+    }
+
+iframe {
+    height: 70vh;
+    width: 100%;
+}
+
+img {
+    margin-bottom: 37px;
+    max-height: 500px;
+}
+
+.description {
+    margin-bottom: 32px;
+}
+
+.left {
+    padding-bottom: 50px;
+}
+
+.property {
+    padding: 8px 0;
+}
+
+::deep .social {
+    margin-bottom: 42px;
+}
+
+.label {
+    display: block
+}
+
+.properties {
+    margin-bottom: 33px;
+}
+
+@media (max-width: 991px) {
+    .right {
+        margin-bottom: 24px;
+        order: -1;
+        max-height: 80vh;
+        height: 300px;
+    }
+}

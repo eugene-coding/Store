@@ -17,7 +17,7 @@ public class AttributeGroup
     /// <summary>
     /// Attribute group sort order.
     /// </summary>
-    [Comment("Attribute group sort order")]
+    [Comment("Attribute group sort order.")]
     public int SortOrder { get; set; }
 
     /// <summary>

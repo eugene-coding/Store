@@ -20,6 +20,16 @@ public class ApplicationDbContext : IdentityDbContext
     }
 
     /// <summary>
+    /// Attribute table.
+    /// </summary>
+    public DbSet<Models.Attribute> Attributes { get; set; }
+
+    /// <summary>
+    /// Attribute description table.
+    /// </summary>  
+    public DbSet<AttributeDescription> AttributeDescriptions { get; set; }
+
+    /// <summary>
     /// Attribute group table.
     /// </summary>
     public DbSet<AttributeGroup> AttributeGroups { get; set; }

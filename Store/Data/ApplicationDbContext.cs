@@ -43,4 +43,9 @@ public class ApplicationDbContext : IdentityDbContext
     /// Table with available languages.
     /// </summary>
     public DbSet<Language> Languages { get; set; }
+
+    /// <summary>
+    /// Table with site settings.
+    /// </summary>
+    public DbSet<Setting> Settings { get; set; }
 }

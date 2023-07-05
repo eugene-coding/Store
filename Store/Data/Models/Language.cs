@@ -12,16 +12,6 @@ namespace Store.Data.Models;
 [Comment("Contains the available languages.")]
 public class Language
 {
-    public Language() 
-    { 
-    }
-
-    [SetsRequiredMembers]
-    public Language(string code)
-    {
-        Code = code;
-    }
-
     /// <summary>
     /// Language ID.
     /// </summary>

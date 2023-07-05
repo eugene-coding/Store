@@ -9,7 +9,7 @@ namespace Store.Areas.Admin.Services.Tests;
 [TestClass]
 public class LanguageServiceTest
 {
-    private readonly static Language _language = new("eu");
+    private readonly static Language _language = new() { Code = "eu" };
 
     private readonly ApplicationDbContext _context;
     private readonly LanguageService _service;

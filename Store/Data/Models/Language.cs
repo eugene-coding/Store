@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Store.Data.Models;
 
@@ -24,4 +23,16 @@ public class Language
     [MaxLength(5)]
     [Comment("Language code.")]
     public required string Code { get; set; }
+
+    /// <summary>
+    /// Sort order.
+    /// </summary>
+    [Comment("Sort order.")]
+    public int SortOrder { get; set; }
+
+    /// <summary>
+    /// Determines if the <see cref="Language"/> is enabled, whether it should be displayed in the lists of available languages.
+    /// </summary>
+    [Comment("Determines if the language is enabled, whether it should be displayed in the lists of available languages.")]
+    public bool Enabled { get; set; }
 }

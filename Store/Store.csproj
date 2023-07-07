@@ -21,4 +21,10 @@
     <Folder Include="Areas\Admin\Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Update="Areas\Admin\Pages\Localization\Language\LanguageView.ru.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

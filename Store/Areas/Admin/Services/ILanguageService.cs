@@ -1,4 +1,5 @@
-﻿using Store.Data;
+﻿using Store.Areas.Admin.Pages.Localization.Language;
+using Store.Data;
 using Store.Data.Models;
 
 namespace Store.Areas.Admin.Services;
@@ -13,6 +14,18 @@ public interface ILanguageService
     /// </summary>
     /// <param name="language">Language.</param>
     Task AddAsync(Language language);
+
+    /// <summary>
+    /// Removes the <see cref="Language"/> with the specified <paramref name="id"/>.
+    /// </summary>
+    /// <param name="id">Language ID</param>
+    Task DeleteAsync(int id);
+
+    /// <summary>
+    /// Returns a <see cref="List{T}"/> of <see cref="Language"/> converted to <see cref="LanguageView"/>.
+    /// </summary>
+    /// <returns><see cref="List{T}"/> of <see cref="Language"/> converted to <see cref="LanguageView"/>.</returns>
+    Task<List<LanguageView>> GetAsync();
 
     /// <summary>
     /// Checks if a <see cref="Language"/> with the specified <paramref name="code"/> exists.

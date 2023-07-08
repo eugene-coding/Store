@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+using Store.Areas.Admin.Pages.Localization.Language;
 using Store.Data;
 using Store.Data.Models;
 
@@ -23,6 +24,24 @@ public class LanguageService : ILanguageService
     {
         _context.Languages.Add(language);
         await _context.SaveChangesAsync();
+    }
+
+    public async Task DeleteAsync(int id)
+    {
+        var language = await _context.Languages.FindAsync(id);
+
+        if (language is not null)
+        {
+            _context.Languages.Remove(language);
+            await _context.SaveChangesAsync();
+        }
+    }
+
+    public async Task<List<LanguageView>> GetAsync()
+    {
+        return await _context.Languages
+            .Select(language => (LanguageView) language)
+            .ToListAsync();
     }
 
     public async Task<bool> ExistsAsync(string code)

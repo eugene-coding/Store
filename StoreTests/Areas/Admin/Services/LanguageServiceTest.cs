@@ -36,17 +36,48 @@ public class LanguageServiceTest
     [TestMethod]
     public async Task AddExistingLanguage()
     {
-        await _context.Languages.AddAsync(_language);
-        await _context.SaveChangesAsync();
+        await AddLanguage();
 
         await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await _service.AddAsync(_language));
     }
 
     [TestMethod]
+    public async Task DeleteExistingLanguage()
+    {
+        await AddLanguage();
+
+        var language = await _context.Languages.FindAsync(1);
+        Assert.IsNotNull(language);
+
+        await _service.DeleteAsync(1);
+        language = await _context.Languages.FindAsync(1);
+
+        Assert.IsNull(language);
+    }
+
+    [TestMethod]
+    public async Task DeleteNonExistentLanguage()
+    {
+        await _service.DeleteAsync(1);
+        var language = await _context.Languages.FindAsync(1);
+
+        Assert.IsNull(language);
+    }
+
+    [TestMethod]
+    public async Task GetLanguages()
+    {
+        await AddLanguage();
+
+        var languages = await _service.GetAsync();
+
+        Assert.AreEqual(1, languages.Count);
+    }
+
+    [TestMethod]
     public async Task ExistsFoundLanguage()
     {
-        await _context.Languages.AddAsync(_language);
-        await _context.SaveChangesAsync();
+        await AddLanguage();
 
         var exists = await _service.ExistsAsync(_language.Code);
 
@@ -64,8 +95,7 @@ public class LanguageServiceTest
     [TestMethod]
     public async Task GetCountAsyncTest()
     {
-        await _context.Languages.AddAsync(_language);
-        await _context.SaveChangesAsync();
+        await AddLanguage();
 
         var count = await _service.GetCountAsync();
 
@@ -76,5 +106,11 @@ public class LanguageServiceTest
     public async Task Cleanup()
     {
         await _context.DisposeAsync();
+    }
+
+    private async Task AddLanguage()
+    {
+        await _context.Languages.AddAsync(_language);
+        await _context.SaveChangesAsync();
     }
 }

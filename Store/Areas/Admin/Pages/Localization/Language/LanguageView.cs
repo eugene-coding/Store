@@ -46,7 +46,6 @@ public class LanguageView
     [Display(Name = nameof(Enabled))]
     public bool Enabled { get; set; }
 
-
     public static implicit operator Data.Models.Language(LanguageView language)
     {
         return new Data.Models.Language

@@ -39,6 +39,10 @@ public class ApplicationDbContext : IdentityDbContext
     /// </summary>  
     public DbSet<AttributeGroupDescription> AttributeGroupDescriptions { get; set; }
 
+    public DbSet<Length> Lengths { get; set; }
+
+    public DbSet<LengthDescription> LengthDescriptions { get; set; }
+
     /// <summary>
     /// Table with available languages.
     /// </summary>

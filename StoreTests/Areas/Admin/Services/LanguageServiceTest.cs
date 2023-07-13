@@ -9,7 +9,7 @@ namespace Store.Areas.Admin.Services.Tests;
 [TestClass]
 public class LanguageServiceTest
 {
-    private readonly static Language _language = new() { Code = "eu" };
+    private readonly static Language s_language = new() { Code = "eu" };
 
     private readonly ApplicationDbContext _context;
     private readonly LanguageService _service;
@@ -27,8 +27,8 @@ public class LanguageServiceTest
     [TestMethod]
     public async Task AddNewLanguage()
     {
-        await _service.AddAsync(_language);
-        var exists = await _context.Languages.AnyAsync(l => l == _language);
+        await _service.AddAsync(s_language);
+        var exists = await _context.Languages.AnyAsync(l => l == s_language);
 
         Assert.IsTrue(exists);
     }
@@ -38,7 +38,7 @@ public class LanguageServiceTest
     {
         await AddLanguage();
 
-        await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await _service.AddAsync(_language));
+        await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await _service.AddAsync(s_language));
     }
 
     [TestMethod]
@@ -79,7 +79,7 @@ public class LanguageServiceTest
     {
         await AddLanguage();
 
-        var exists = await _service.ExistsAsync(_language.Code);
+        var exists = await _service.ExistsAsync(s_language.Code);
 
         Assert.IsTrue(exists);
     }
@@ -87,7 +87,7 @@ public class LanguageServiceTest
     [TestMethod]
     public async Task ExistsNotFoundLanguage()
     {
-        var exists = await _service.ExistsAsync(_language.Code);
+        var exists = await _service.ExistsAsync(s_language.Code);
 
         Assert.IsFalse(exists);
     }
@@ -110,7 +110,7 @@ public class LanguageServiceTest
 
     private async Task AddLanguage()
     {
-        await _context.Languages.AddAsync(_language);
+        await _context.Languages.AddAsync(s_language);
         await _context.SaveChangesAsync();
     }
 }

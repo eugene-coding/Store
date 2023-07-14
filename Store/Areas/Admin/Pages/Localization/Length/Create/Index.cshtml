@@ -1,0 +1,20 @@
+﻿@page
+@model Store.Areas.Admin.Pages.Localization.Length.Create.IndexModel
+
+<div class="header">
+    <ol class="breadcrumb">
+        @foreach (var breadcrumb in Model.Breadcrumbs)
+        {
+            <li class="breadcrumb-item">
+                @if (breadcrumb.Url is not null)
+                {
+                    <a href="@breadcrumb.Url">@breadcrumb.Name</a>
+                }
+                else
+                {
+                    @breadcrumb.Name
+                }
+            </li>
+        }
+    </ol>
+</div>

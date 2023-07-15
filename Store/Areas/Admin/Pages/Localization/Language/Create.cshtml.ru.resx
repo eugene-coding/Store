@@ -123,7 +123,4 @@
   <data name="Language already exists" xml:space="preserve">
     <value>Язык уже существует.</value>
   </data>
-  <data name="Unable to determine language" xml:space="preserve">
-    <value>Не удалось определить язык.</value>
-  </data>
 </root>

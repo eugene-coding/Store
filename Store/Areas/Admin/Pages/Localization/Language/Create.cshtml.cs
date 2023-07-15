@@ -4,8 +4,6 @@ using Microsoft.Extensions.Localization;
 
 using Store.Areas.Admin.Services;
 
-using System.Globalization;
-
 namespace Store.Areas.Admin.Pages.Localization.Language;
 
 /// <summary>
@@ -73,15 +71,6 @@ public class CreateModel : PageModel
             return Page();
         }
 
-        if (!IsCodeValid())
-        {
-            ModelState.AddModelError(
-                $"{nameof(Language)}.{nameof(Language.Code)}",
-                Localizer["Unable to determine language"]);
-
-            return Page();
-        }
-
         if (await service.ExistsAsync(Language.Code))
         {
             ModelState.AddModelError(
@@ -94,15 +83,5 @@ public class CreateModel : PageModel
         await service.AddAsync(Language);
 
         return Redirect(PreviousPage);
-    }
-
-    private bool IsCodeValid()
-    {
-        var cultureTypes = CultureTypes.NeutralCultures | CultureTypes.SpecificCultures;
-
-        var culture = CultureInfo.GetCultures(cultureTypes)
-            .FirstOrDefault(l => l.Name == Language.Code);
-
-        return culture is not null;
     }
 }

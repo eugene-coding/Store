@@ -18,6 +18,13 @@ public class Language
     public int Id { get; set; }
 
     /// <summary>
+    /// Language name.
+    /// </summary>
+    [MaxLength(32)]
+    [Comment("Language name.")]
+    public required string Name { get; set; }
+
+    /// <summary>
     /// Language code.
     /// </summary>
     [MaxLength(5)]

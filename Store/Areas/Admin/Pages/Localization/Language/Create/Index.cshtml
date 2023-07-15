@@ -36,6 +36,14 @@
     <div class="card-body">
         <form id="language" method="post">
             <div class="row mb-3">
+                <label asp-for="Language.Name" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="Language.Name" class="form-control" />
+                    <span asp-validation-for="Language.Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
                 <label asp-for="Language.Code" class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10">
                     <input asp-for="Language.Code" class="form-control" />

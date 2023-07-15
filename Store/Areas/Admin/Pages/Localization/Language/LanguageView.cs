@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using System.ComponentModel.DataAnnotations;
-using System.Globalization;
 
 namespace Store.Areas.Admin.Pages.Localization.Language;
 
@@ -14,24 +13,10 @@ public class LanguageView
     [HiddenInput]
     public int Id { get; set; }
 
-    /// <summary>
-    /// Language name.
-    /// </summary>
+    /// <inheritdoc cref="Data.Models.Language.Name"/>
     [Display(Name = nameof(Name))]
-    public string Name
-    {
-        get
-        {
-            try
-            {
-                return CultureInfo.GetCultureInfo(Code).DisplayName;
-            }
-            catch
-            {
-                return string.Empty;
-            }
-        }
-    }
+    [MaxLength(24)]
+    public string Name { get; set; } = string.Empty;
 
     /// <inheritdoc cref="Data.Models.Language.Code"/>
     [Display(Name = nameof(Code))]
@@ -51,6 +36,7 @@ public class LanguageView
         return new Data.Models.Language
         {
             Id = language.Id,
+            Name = language.Name,
             Code = language.Code,
             SortOrder = language.SortOrder,
             Enabled = language.Enabled
@@ -62,6 +48,7 @@ public class LanguageView
         return new LanguageView
         {
             Id = language.Id,
+            Name = language.Name,
             Code = language.Code,
             SortOrder = language.SortOrder,
             Enabled = language.Enabled

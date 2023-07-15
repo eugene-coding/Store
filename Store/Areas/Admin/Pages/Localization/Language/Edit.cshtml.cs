@@ -78,7 +78,7 @@ public class EditModel : PageModel
         {
             ModelState.AddModelError(
                 $"{nameof(Language)}.{nameof(Language.Code)}",
-                Localizer["Language already exists"]);
+                SharedLocalizer["Language already exists"]);
 
             return Page();
         }

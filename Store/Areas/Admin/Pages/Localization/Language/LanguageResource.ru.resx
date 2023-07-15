@@ -123,4 +123,7 @@
   <data name="Heading title" xml:space="preserve">
     <value>Языки</value>
   </data>
+  <data name="Language already exists" xml:space="preserve">
+    <value>Язык уже существует.</value>
+  </data>
 </root>

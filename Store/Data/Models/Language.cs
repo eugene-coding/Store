@@ -22,14 +22,14 @@ public class Language
     /// </summary>
     [MaxLength(32)]
     [Comment("Language name.")]
-    public required string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
     /// <summary>
     /// Language code.
     /// </summary>
     [MaxLength(5)]
     [Comment("Language code.")]
-    public required string Code { get; set; }
+    public required string Code { get; set; } = string.Empty;
 
     /// <summary>
     /// Sort order.

@@ -13,10 +13,7 @@ namespace Store.Areas.Admin.Pages.Localization.Language.Create;
 /// </summary>
 public class IndexModel : PageModel
 {
-    /// <summary>
-    /// Previous page.
-    /// </summary>
-    public static Uri BackUrl { get; } = new(".", UriKind.Relative);
+    private readonly Breadcrumb[] _breadcrumbs = new Breadcrumb[2];
 
     /// <summary>
     /// Creates the <see cref="IndexModel"/> instance.
@@ -29,9 +26,15 @@ public class IndexModel : PageModel
         SharedLocalizer = sharedLocalizer;
     }
 
-    /// <inheritdoc cref="LanguageView"/>
-    [BindProperty]
-    public LanguageView Language { get; set; } = new();
+    /// <summary>
+    /// Link to the previous page.
+    /// </summary>
+    public string PreviousPage => ".";
+
+    /// <summary>
+    /// Breadcrumbs.
+    /// </summary>
+    public IEnumerable<Breadcrumb> Breadcrumbs => _breadcrumbs;
 
     /// <summary>
     /// Page localizer.
@@ -43,18 +46,17 @@ public class IndexModel : PageModel
     /// </summary>
     public IStringLocalizer<LanguageResource> SharedLocalizer { get; }
 
-    /// <summary>
-    /// Breadcrumbs.
-    /// </summary>
-    public List<Breadcrumb> Breadcrumbs { get; private set; } = new List<Breadcrumb>();
+    /// <inheritdoc cref="LanguageView"/>
+    [BindProperty]
+    public LanguageView Language { get; set; } = new();
 
     /// <summary>
     /// <c>GET</c> request handler.
     /// </summary>
     public void OnGet()
     {
-        Breadcrumbs.Add(new Breadcrumb(SharedLocalizer["Heading title"], BackUrl.ToString()));
-        Breadcrumbs.Add(new Breadcrumb(Localizer["Add"]));
+        _breadcrumbs[0] = new Breadcrumb(SharedLocalizer["Heading title"], PreviousPage);
+        _breadcrumbs[1] = new Breadcrumb(Localizer["Add"]);
     }
 
     /// <summary>
@@ -88,20 +90,16 @@ public class IndexModel : PageModel
 
         await service.AddAsync(Language);
 
-        return Redirect(BackUrl.ToString());
+        return Redirect(PreviousPage);
     }
 
     private bool IsCodeValid()
     {
-        try
-        {
-            var culture = new CultureInfo(Language.Code);
+        var cultureTypes = CultureTypes.NeutralCultures | CultureTypes.SpecificCultures;
 
-            return !culture.CultureTypes.HasFlag(CultureTypes.UserCustomCulture);
-        }
-        catch (CultureNotFoundException)
-        {
-            return false;
-        }
+        var culture = CultureInfo.GetCultures(cultureTypes)
+            .FirstOrDefault(l => l.Name == Language.Code);
+
+        return culture is not null;
     }
 }

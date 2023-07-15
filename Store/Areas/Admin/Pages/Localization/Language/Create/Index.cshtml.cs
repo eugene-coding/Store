@@ -13,7 +13,7 @@ namespace Store.Areas.Admin.Pages.Localization.Language.Create;
 /// </summary>
 public class IndexModel : PageModel
 {
-    private readonly Breadcrumb[] _breadcrumbs = new Breadcrumb[2];
+    private Breadcrumb[] _breadcrumbs = Array.Empty<Breadcrumb>();
 
     /// <summary>
     /// Creates the <see cref="IndexModel"/> instance.
@@ -55,8 +55,11 @@ public class IndexModel : PageModel
     /// </summary>
     public void OnGet()
     {
-        _breadcrumbs[0] = new Breadcrumb(SharedLocalizer["Heading title"], PreviousPage);
-        _breadcrumbs[1] = new Breadcrumb(Localizer["Add"]);
+        _breadcrumbs = new Breadcrumb[]
+        {
+            new Breadcrumb(SharedLocalizer["Heading title"], PreviousPage),
+            new Breadcrumb(Localizer["Add"])
+        };
     }
 
     /// <summary>

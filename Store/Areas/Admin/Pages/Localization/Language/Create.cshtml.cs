@@ -6,21 +6,21 @@ using Store.Areas.Admin.Services;
 
 using System.Globalization;
 
-namespace Store.Areas.Admin.Pages.Localization.Language.Create;
+namespace Store.Areas.Admin.Pages.Localization.Language;
 
 /// <summary>
 /// Create language page model.
 /// </summary>
-public class IndexModel : PageModel
+public class CreateModel : PageModel
 {
     private Breadcrumb[] _breadcrumbs = Array.Empty<Breadcrumb>();
 
     /// <summary>
-    /// Creates the <see cref="IndexModel"/> instance.
+    /// Creates the <see cref="CreateModel"/> instance.
     /// </summary>
     /// <param name="localizer">Page localizer.</param>
     /// <param name="sharedLocalizer">Shared resource localizer.</param>
-    public IndexModel(IStringLocalizer<IndexModel> localizer, IStringLocalizer<LanguageResource> sharedLocalizer)
+    public CreateModel(IStringLocalizer<CreateModel> localizer, IStringLocalizer<LanguageResource> sharedLocalizer)
     {
         Localizer = localizer;
         SharedLocalizer = sharedLocalizer;
@@ -39,7 +39,7 @@ public class IndexModel : PageModel
     /// <summary>
     /// Page localizer.
     /// </summary>
-    public IStringLocalizer<IndexModel> Localizer { get; }
+    public IStringLocalizer<CreateModel> Localizer { get; }
 
     /// <summary>
     /// Shared resource localizer.

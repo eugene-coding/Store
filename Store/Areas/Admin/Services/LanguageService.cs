@@ -20,15 +20,17 @@ public class LanguageService : ILanguageService
         _context = context;
     }
 
+    private DbSet<Language> Languages => _context.Languages;
+
     public async Task AddAsync(Language language)
     {
-        _context.Languages.Add(language);
+        Languages.Add(language);
         await _context.SaveChangesAsync();
     }
 
     public async Task UpdateAsync(LanguageView language)
     {
-        var entity = await _context.Languages.FindAsync(language.Id);
+        var entity = await Languages.FindAsync(language.Id);
 
         if (entity is not null)
         {
@@ -43,7 +45,7 @@ public class LanguageService : ILanguageService
 
     public async Task DeleteAsync(int id)
     {
-        var language = await _context.Languages.FindAsync(id);
+        var language = await Languages.FindAsync(id);
 
         if (language is not null)
         {
@@ -54,7 +56,7 @@ public class LanguageService : ILanguageService
 
     public async Task<LanguageView?> GetAsync(int id)
     {
-        return await _context.Languages
+        return await Languages
             .Where(language => language.Id == id)
             .Cast<LanguageView>()
             .SingleOrDefaultAsync();
@@ -62,14 +64,14 @@ public class LanguageService : ILanguageService
 
     public async Task<List<LanguageView>> GetAsync()
     {
-        return await _context.Languages
+        return await Languages
             .Cast<LanguageView>()
             .ToListAsync();
     }
 
     public async Task<string?> GetCodeAsync(int id)
     {
-        return await _context.Languages
+        return await Languages
             .Where(language => language.Id == id)
             .Select(language => language.Code)
             .SingleOrDefaultAsync();
@@ -77,11 +79,11 @@ public class LanguageService : ILanguageService
 
     public async Task<bool> ExistsAsync(string code)
     {
-        return await _context.Languages.AnyAsync(l => l.Code == code);
+        return await Languages.AnyAsync(l => l.Code == code);
     }
 
     public async Task<int> GetCountAsync()
     {
-        return await _context.Languages.CountAsync();
+        return await Languages.CountAsync();
     }
 }

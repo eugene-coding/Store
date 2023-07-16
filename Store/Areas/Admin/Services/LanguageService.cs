@@ -63,7 +63,7 @@ public class LanguageService : ILanguageService
     public async Task<List<LanguageView>> GetAsync()
     {
         return await _context.Languages
-            .Select(language => (LanguageView) language)
+            .Cast<LanguageView>()
             .ToListAsync();
     }
 

@@ -43,6 +43,14 @@ public interface ILanguageService
     Task<List<LanguageView>> GetAsync();
 
     /// <summary>
+    /// Returns the <see cref="Language.Code"/> of the <see cref="Language"/> with the specified <paramref name="id"/>.
+    /// </summary>
+    /// <returns>
+    /// The <see cref="Language.Code"/> of the <see cref="Language"/> with the specified <paramref name="id"/>, 
+    /// if such a <see cref="Language"/> exists, otherwise - <see langword="null"/></returns>
+    Task<string?> GetCodeAsync(int id);
+
+    /// <summary>
     /// Checks if a <see cref="Language"/> with the specified <paramref name="code"/> exists.
     /// </summary>
     /// <param name="code">Language code.</param>

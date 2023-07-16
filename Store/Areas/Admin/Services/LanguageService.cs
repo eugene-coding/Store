@@ -67,6 +67,14 @@ public class LanguageService : ILanguageService
             .ToListAsync();
     }
 
+    public async Task<string?> GetCodeAsync(int id)
+    {
+        return await _context.Languages
+            .Where(language => language.Id == id)
+            .Select(language => language.Code)
+            .SingleOrDefaultAsync();
+    }
+
     public async Task<bool> ExistsAsync(string code)
     {
         return await _context.Languages.AnyAsync(l => l.Code == code);

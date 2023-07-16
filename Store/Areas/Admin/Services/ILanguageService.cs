@@ -22,6 +22,14 @@ public interface ILanguageService
     Task DeleteAsync(int id);
 
     /// <summary>
+    /// Returns the <see cref="Language"/> with the specified <paramref name="id"/> converted to <see cref="LanguageView"/>.
+    /// </summary>
+    /// <returns>
+    /// Returns the <see cref="Language"/> with the specified <paramref name="id"/> converted to <see cref="LanguageView"/>, 
+    /// if such a <see cref="Language"/> exists, otherwise - <see langword="null"/></returns>
+    Task<LanguageView?> GetAsync(int id);
+
+    /// <summary>
     /// Returns a <see cref="List{T}"/> of <see cref="Language"/> converted to <see cref="LanguageView"/>.
     /// </summary>
     /// <returns><see cref="List{T}"/> of <see cref="Language"/> converted to <see cref="LanguageView"/>.</returns>

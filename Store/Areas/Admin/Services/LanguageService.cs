@@ -37,6 +37,14 @@ public class LanguageService : ILanguageService
         }
     }
 
+    public async Task<LanguageView?> GetAsync(int id)
+    {
+        return await _context.Languages
+            .Where(language => language.Id == id)
+            .Cast<LanguageView>()
+            .SingleOrDefaultAsync();
+    }
+
     public async Task<List<LanguageView>> GetAsync()
     {
         return await _context.Languages

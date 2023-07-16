@@ -65,6 +65,24 @@ public class LanguageServiceTest
     }
 
     [TestMethod]
+    public async Task GetExisitingLanguage()
+    {
+        await AddLanguage();
+
+        var language = await _service.GetAsync(1);
+
+        Assert.IsNotNull(language);
+    }
+
+    [TestMethod]
+    public async Task GetNonExistentLanguage()
+    {
+        var language = await _service.GetAsync(1);
+
+        Assert.IsNull(language);
+    }
+
+    [TestMethod]
     public async Task GetLanguages()
     {
         await AddLanguage();

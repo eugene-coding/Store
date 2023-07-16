@@ -16,6 +16,13 @@ public interface ILanguageService
     Task AddAsync(Language language);
 
     /// <summary>
+    /// Finds the <see cref="Language"/> entry by <see cref="LanguageView.Id"/> 
+    /// and updates its values.
+    /// </summary>
+    /// <param name="language">Language view.</param>
+    Task UpdateAsync(LanguageView language);
+
+    /// <summary>
     /// Removes the <see cref="Language"/> with the specified <paramref name="id"/>.
     /// </summary>
     /// <param name="id">Language ID</param>

@@ -26,6 +26,21 @@ public class LanguageService : ILanguageService
         await _context.SaveChangesAsync();
     }
 
+    public async Task UpdateAsync(LanguageView language)
+    {
+        var entity = await _context.Languages.FindAsync(language.Id);
+
+        if (entity is not null)
+        {
+            entity.Name = language.Name;
+            entity.Code = language.Code;
+            entity.SortOrder = language.SortOrder;
+            entity.Enabled = language.Enabled;
+
+            await _context.SaveChangesAsync();
+        }
+    }
+
     public async Task DeleteAsync(int id)
     {
         var language = await _context.Languages.FindAsync(id);

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+using Store.Areas.Admin.Pages.Localization.Language;
 using Store.Data;
 using Store.Data.Models;
 
@@ -39,6 +40,50 @@ public class LanguageServiceTest
         await AddLanguage();
 
         await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await _service.AddAsync(s_language));
+    }
+
+    [TestMethod]
+    public async Task UpdateExistingLanguage()
+    {
+        await AddLanguage();
+
+        var view = new LanguageView
+        {
+            Id = s_language.Id,
+            Name = $"Updated",
+            Code = $"Updated",
+            SortOrder = 100,
+            Enabled = true
+        };
+
+        await _service.UpdateAsync(view);
+
+        var language = await _context.Languages.FindAsync(1);
+
+        if (language is null)
+        {
+            Assert.Fail();
+        }
+
+        Assert.AreEqual(view.Name, language.Name);
+        Assert.AreEqual(view.Code, language.Code);
+        Assert.AreEqual(view.SortOrder, language.SortOrder);
+        Assert.AreEqual(view.Enabled, language.Enabled);
+    }
+
+    [TestMethod]
+    public async Task UpdateNonExistentLanguage()
+    {
+        var view = new LanguageView
+        {
+            Id = 2,
+            Name = $"Updated",
+            Code = $"Updated",
+            SortOrder = 100,
+            Enabled = true
+        };
+
+        await _service.UpdateAsync(view);
     }
 
     [TestMethod]

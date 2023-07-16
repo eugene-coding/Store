@@ -32,7 +32,7 @@ public interface ILanguageService
     /// Returns the <see cref="Language"/> with the specified <paramref name="id"/> converted to <see cref="LanguageView"/>.
     /// </summary>
     /// <returns>
-    /// Returns the <see cref="Language"/> with the specified <paramref name="id"/> converted to <see cref="LanguageView"/>, 
+    /// The <see cref="Language"/> with the specified <paramref name="id"/> converted to <see cref="LanguageView"/>, 
     /// if such a <see cref="Language"/> exists, otherwise - <see langword="null"/></returns>
     Task<LanguageView?> GetAsync(int id);
 

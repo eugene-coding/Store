@@ -27,9 +27,9 @@ public class EditModel : PageModel
     }
 
     /// <summary>
-    /// Link to the previous page.
+    /// Link to the index page.
     /// </summary>
-    public string PreviousPage => ".";
+    public string IndexPage => "../";
 
     /// <summary>
     /// Page localizer.
@@ -69,7 +69,7 @@ public class EditModel : PageModel
 
         Breadcrumbs = new Breadcrumb[]
         {
-            new Breadcrumb(SharedLocalizer["Heading title"], PreviousPage),
+            new Breadcrumb(SharedLocalizer["Heading title"], IndexPage),
             new Breadcrumb(Localizer["Edit"])
         };
 
@@ -100,6 +100,6 @@ public class EditModel : PageModel
 
         await _service.UpdateAsync(Language);
 
-        return Redirect(PreviousPage);
+        return Redirect(IndexPage);
     }
 }

@@ -12,7 +12,6 @@ namespace Store.Areas.Admin.Pages.Localization.Language;
 public class EditModel : PageModel
 {
     private readonly ILanguageService _service;
-    private Breadcrumb[] _breadcrumbs = Array.Empty<Breadcrumb>();
 
     /// <summary>
     /// Creates the <see cref="EditModel"/> instance.
@@ -33,11 +32,6 @@ public class EditModel : PageModel
     public string PreviousPage => ".";
 
     /// <summary>
-    /// Breadcrumbs.
-    /// </summary>
-    public IEnumerable<Breadcrumb> Breadcrumbs => _breadcrumbs;
-
-    /// <summary>
     /// Page localizer.
     /// </summary>
     public IStringLocalizer<EditModel> Localizer { get; }
@@ -52,11 +46,16 @@ public class EditModel : PageModel
     public LanguageView Language { get; set; } = new();
 
     /// <summary>
+    /// Breadcrumbs.
+    /// </summary>
+    public IEnumerable<Breadcrumb> Breadcrumbs { get; private set; } = Enumerable.Empty<Breadcrumb>();
+
+    /// <summary>
     /// <c>GET</c> request handler.
     /// </summary>
     public void OnGet(int id)
     {
-        _breadcrumbs = new Breadcrumb[]
+        Breadcrumbs = new Breadcrumb[]
         {
             new Breadcrumb(SharedLocalizer["Heading title"], PreviousPage),
             new Breadcrumb(Localizer["Edit"])

@@ -21,6 +21,12 @@
     <div class="card-header"><i class="fa-solid fa-pencil"></i> @Model.Localizer["Add"]</div>
 
     <div class="card-body">
-        @await Html.PartialAsync("_Form", Model.Language)
+        <partial name="_Form" for="Language" />
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

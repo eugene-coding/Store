@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Breadcrumb>
+
+<ol class="breadcrumb">
+    @foreach (var breadcrumb in Model)
+    {
+        <li class="breadcrumb-item">
+            @if (breadcrumb.Url is not null)
+            {
+                <a href="@breadcrumb.Url">@breadcrumb.Name</a>
+            }
+            else
+            {
+                @breadcrumb.Name
+            }
+        </li>
+    }
+</ol>

@@ -86,16 +86,19 @@ public class EditModel : PageModel
             return Page();
         }
 
-        if (await _service.ExistsAsync(Language.Code))
+        var codeChanged = await _service.GetCodeAsync(Language.Id) != Language.Code;
+        var codeExists = await _service.ExistsAsync(Language.Code);
+
+        if (codeChanged && codeExists)
         {
             ModelState.AddModelError(
                 $"{nameof(Language)}.{nameof(Language.Code)}",
-                SharedLocalizer["Language already exists"]);
+                SharedLocalizer["Code already exists"]);
 
             return Page();
         }
 
-        await _service.AddAsync(Language);
+        await _service.UpdateAsync(Language);
 
         return Redirect(PreviousPage);
     }

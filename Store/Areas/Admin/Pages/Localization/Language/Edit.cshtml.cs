@@ -66,7 +66,6 @@ public class EditModel : PageModel
     /// <summary>
     /// <c>POST</c> request handler.
     /// </summary>
-    /// <param name="service">The <see cref="ILanguageService"/>.</param>
     public async Task<IActionResult> OnPostAsync()
     {
         if (!ModelState.IsValid)

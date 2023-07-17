@@ -53,13 +53,27 @@ public class EditModel : PageModel
     /// <summary>
     /// <c>GET</c> request handler.
     /// </summary>
-    public void OnGet(int id)
+    public async Task<IActionResult> OnGet(int id)
     {
+        var language = await _service.GetAsync(id);
+
+        if (language is not null)
+        {
+            Language = language;
+        }
+        else
+        {
+            // TODO: Create NotFound page
+            return RedirectToPage("NotFound");
+        }    
+
         Breadcrumbs = new Breadcrumb[]
         {
             new Breadcrumb(SharedLocalizer["Heading title"], PreviousPage),
             new Breadcrumb(Localizer["Edit"])
         };
+
+        return Page();
     }
 
     /// <summary>

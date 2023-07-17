@@ -14,21 +14,7 @@
 
     <h1>@Model.SharedLocalizer["Heading title"]</h1>
 
-    <ol class="breadcrumb">
-        @foreach (var breadcrumb in Model.Breadcrumbs)
-        {
-            <li class="breadcrumb-item">
-                @if (breadcrumb.Url is not null)
-                {
-                    <a href="@breadcrumb.Url">@breadcrumb.Name</a>
-                }
-                else
-                {
-                    @breadcrumb.Name
-                }
-            </li>
-        }
-    </ol>
+    <partial name="_Breadcrumbs" for="Breadcrumbs" />
 </div>
 
 <div class="card">

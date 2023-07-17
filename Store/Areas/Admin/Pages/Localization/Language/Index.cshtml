@@ -1,4 +1,59 @@
 ﻿@page
-@model Store.Areas.Admin.Pages.Localization.Language.IndexModel
-@{
-}
+@model IndexModel
+
+<div class="header">
+    <div class="float-end">
+        <a asp-page="Create" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i>
+        </a>
+    </div>
+
+    <h1>@Model.SharedLocalizer["Heading title"]</h1>
+
+    <partial name="_Breadcrumbs" for="Breadcrumbs" />
+</div>
+
+<div class="card">
+    <div class="card-header"></div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <input type="checkbox" />
+                        </th>
+
+                        <th scope="col">Название</th>
+                        <th scope="col">Код</th>
+                        <th scope="col">Порядок сортировки</th>
+                        <th scope="col">Включен</th>
+                        <th scope="col">Действия</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var language in Model.Languages)
+                    {
+                        <tr>
+                            <th scope="row">
+                                <input type="checkbox" />
+                            </th>
+
+                            <td>@language.Name</td>
+                            <td>@language.Code</td>
+                            <td>@language.SortOrder</td>
+                            <td>@language.Enabled</td>
+
+                            <td>
+                                <a asp-page="Edit" asp-route-id="@language.Id" class="btn btn-primary">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -43,7 +43,7 @@ public class EditModel : PageModel
 
     /// <inheritdoc cref="LanguageView"/>
     [BindProperty]
-    public LanguageView Language { get; set; } = new();
+    public LanguageView Language { get; set; } = null!;
 
     /// <summary>
     /// Breadcrumbs.

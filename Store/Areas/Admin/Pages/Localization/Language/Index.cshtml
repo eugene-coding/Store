@@ -24,11 +24,11 @@
                             <input type="checkbox" />
                         </th>
 
-                        <th scope="col">Название</th>
-                        <th scope="col">Код</th>
-                        <th scope="col">Порядок сортировки</th>
-                        <th scope="col">Включен</th>
-                        <th scope="col">Действия</th>
+                        <th scope="col">@Html.DisplayNameForInnerType((LanguageView l) => l.Name)</th>
+                        <th scope="col">@Html.DisplayNameForInnerType((LanguageView l) => l.Code)</th>
+                        <th scope="col">@Html.DisplayNameForInnerType((LanguageView l) => l.SortOrder)</th>
+                        <th scope="col">@Html.DisplayNameForInnerType((LanguageView l) => l.Enabled)</th>
+                        <th scope="col">@Model.SharedLocalizer["Action"]</th>
                     </tr>
                 </thead>
 

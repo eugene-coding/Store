@@ -28,6 +28,8 @@ public interface ILanguageService
     /// <param name="id">Language ID</param>
     Task DeleteAsync(int id);
 
+    Task DeleteAsync(IReadOnlyCollection<int> ids);
+
     /// <summary>
     /// Returns the <see cref="Language"/> with the specified <paramref name="id"/> converted to <see cref="LanguageView"/>.
     /// </summary>

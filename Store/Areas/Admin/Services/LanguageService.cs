@@ -54,6 +54,20 @@ public class LanguageService : ILanguageService
         }
     }
 
+    public async Task DeleteAsync(IReadOnlyCollection<int> ids)
+    {
+        if (ids.Count > 0)
+        {
+            var languages = await _context.Languages
+                .Where(a => ids.Contains(a.Id))
+                .ToArrayAsync();
+
+            _context.Languages.RemoveRange(languages);
+
+            await _context.SaveChangesAsync();
+        }
+    }
+
     public async Task<LanguageView?> GetAsync(int id)
     {
         return await Languages

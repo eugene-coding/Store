@@ -33,25 +33,35 @@
                 </thead>
 
                 <tbody>
-                    @foreach (var language in Model.Languages)
+                    @if (Model.Languages.Count > 0)
+                    {
+                        @foreach (var language in Model.Languages)
+                        {
+                            <tr>
+                                <th scope="row">
+                                    <input type="checkbox" />
+                                </th>
+
+                                <td>@language.Name</td>
+                                <td>@language.Code</td>
+                                <td>@language.SortOrder</td>
+                                <td>@language.Enabled</td>
+
+                                <td>
+                                    <a asp-page="Edit" asp-route-id="@language.Id" class="btn btn-primary">
+                                        <i class="fa-solid fa-pencil"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
                     {
                         <tr>
-                            <th scope="row">
-                                <input type="checkbox" />
-                            </th>
-
-                            <td>@language.Name</td>
-                            <td>@language.Code</td>
-                            <td>@language.SortOrder</td>
-                            <td>@language.Enabled</td>
-
-                            <td>
-                                <a asp-page="Edit" asp-route-id="@language.Id" class="btn btn-primary">
-                                    <i class="fa-solid fa-pencil"></i>
-                                </a>
-                            </td>
+                            <td scope="row" colspan="6" class="text-center">@Model.Localizer["No result"]</td>
                         </tr>
                     }
+
                 </tbody>
             </table>
         </div>

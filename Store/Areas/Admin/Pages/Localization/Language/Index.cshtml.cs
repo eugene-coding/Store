@@ -7,14 +7,16 @@ namespace Store.Areas.Admin.Pages.Localization.Language;
 
 public class IndexModel : PageModel
 {
-    public IndexModel(IStringLocalizer<LanguageResource> sharedLocalizer)
+    public IndexModel(IStringLocalizer<IndexModel> localizer, IStringLocalizer<LanguageResource> sharedLocalizer)
     {
+        Localizer = localizer;
         SharedLocalizer = sharedLocalizer;
     }
 
+    public IStringLocalizer<IndexModel> Localizer { get; }
     public IStringLocalizer<LanguageResource> SharedLocalizer { get; }
     public IEnumerable<Breadcrumb> Breadcrumbs { get; private set; } = Enumerable.Empty<Breadcrumb>();
-    public IEnumerable<LanguageView> Languages { get; private set; } = Enumerable.Empty<LanguageView>();
+    public IReadOnlyCollection<LanguageView> Languages { get; private set; } = Array.Empty<LanguageView>();
 
     public async Task OnGetAsync([FromServices] ILanguageService service)
     {

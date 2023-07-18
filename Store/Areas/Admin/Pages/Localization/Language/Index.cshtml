@@ -16,12 +16,12 @@
 <div class="card">
     <div class="card-header"></div>
     <div class="card-body">
-        <div class="table-responsive">
+        <form id="languages" class="table-responsive" method="post">
             <table class="table table-hover align-middle">
                 <thead>
                     <tr>
                         <th scope="col">
-                            <input type="checkbox" />
+                            <input id="select" class="form-check-input" type="checkbox" />
                         </th>
 
                         <th scope="col">@Html.DisplayNameForInnerType((LanguageView l) => l.Name)</th>
@@ -39,7 +39,7 @@
                         {
                             <tr>
                                 <th scope="row">
-                                    <input type="checkbox" />
+                                    <input class="form-check-input" type="checkbox" name="selected" value="@language.Id" />
                                 </th>
 
                                 <td>@language.Name</td>
@@ -63,6 +63,21 @@
                     }
                 </tbody>
             </table>
-        </div>
+        </form>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var mainCheckbox = document.getElementById("select");
+            var subCheckboxes = document.getElementsByName("selected");
+
+            mainCheckbox.addEventListener('change', function () {
+                for (var i = 0; i < subCheckboxes.length; i++) {
+                    subCheckboxes[i].checked = mainCheckbox.checked;
+                }
+            });
+        });
+    </script>
+}

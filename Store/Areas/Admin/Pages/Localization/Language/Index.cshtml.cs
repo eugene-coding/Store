@@ -22,14 +22,14 @@ public class IndexModel : PageModel
     public IEnumerable<Breadcrumb> Breadcrumbs { get; private set; } = Enumerable.Empty<Breadcrumb>();
     public IReadOnlyCollection<LanguageView> Languages { get; private set; } = Array.Empty<LanguageView>();
 
-    public async Task OnGetAsync()
+    public async Task OnGetAsync(string sort)
     {
         Breadcrumbs = new Breadcrumb[]
         {
             new Breadcrumb(SharedLocalizer["Heading title"])
         };
 
-        Languages = await _service.GetAsync();
+        Languages = await _service.GetAsync(sort);
     }
 
     public async Task<IActionResult> OnPostAsync(IReadOnlyCollection<int> selected)
@@ -37,6 +37,5 @@ public class IndexModel : PageModel
         await _service.DeleteAsync(selected);
 
         return RedirectToPage();
-    }
     }
 }

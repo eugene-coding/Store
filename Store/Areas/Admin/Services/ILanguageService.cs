@@ -45,6 +45,15 @@ public interface ILanguageService
     Task<List<LanguageView>> GetAsync();
 
     /// <summary>
+    /// Returns a <see cref="List{T}"/> of <see cref="Language"/> converted to <see cref="LanguageView"/> sorted by <paramref name="sort"/>.
+    /// </summary>
+    /// <param name="sort">Column name to sort by.</param>
+    /// <returns>
+    /// <see cref="List{T}"/> of <see cref="Language"/> converted to <see cref="LanguageView"/> sorted by <paramref name="sort"/>.
+    /// </returns>
+    Task<List<LanguageView>> GetAsync(string sort);
+
+    /// <summary>
     /// Returns the <see cref="Language.Code"/> of the <see cref="Language"/> with the specified <paramref name="id"/>.
     /// </summary>
     /// <returns>

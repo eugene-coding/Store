@@ -3,6 +3,7 @@
 using Store.Areas.Admin.Pages.Localization.Language;
 using Store.Data;
 using Store.Data.Models;
+using System.Linq.Dynamic.Core;
 
 namespace Store.Areas.Admin.Services;
 
@@ -80,6 +81,19 @@ public class LanguageService : ILanguageService
     {
         return await Languages
             .Cast<LanguageView>()
+            .ToListAsync();
+    }
+
+    public async Task<List<LanguageView>> GetAsync(string sort)
+    {
+        var query = Languages.AsQueryable();
+
+        if (!string.IsNullOrEmpty(sort))
+        {
+            query = query.OrderBy(sort);
+        }
+
+        return await query.Cast<LanguageView>()
             .ToListAsync();
     }
 

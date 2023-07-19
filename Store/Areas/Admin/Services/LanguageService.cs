@@ -44,17 +44,6 @@ public class LanguageService : ILanguageService
         }
     }
 
-    public async Task DeleteAsync(int id)
-    {
-        var language = await Languages.FindAsync(id);
-
-        if (language is not null)
-        {
-            _context.Languages.Remove(language);
-            await _context.SaveChangesAsync();
-        }
-    }
-
     public async Task DeleteAsync(IReadOnlyCollection<int> ids)
     {
         if (ids.Count > 0)

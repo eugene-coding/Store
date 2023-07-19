@@ -23,11 +23,9 @@ public interface ILanguageService
     Task UpdateAsync(LanguageView language);
 
     /// <summary>
-    /// Removes the <see cref="Language"/> with the specified <paramref name="id"/>.
+    /// Removes <see cref="Language">languages</see> whose <see cref="Language.Id"/> are in the <paramref name="ids"/>.
     /// </summary>
-    /// <param name="id">Language ID</param>
-    Task DeleteAsync(int id);
-
+    /// <param name="ids"><see cref="IReadOnlyCollection{T}"/> of <see cref="Language.Id"/>.</param>
     Task DeleteAsync(IReadOnlyCollection<int> ids);
 
     /// <summary>

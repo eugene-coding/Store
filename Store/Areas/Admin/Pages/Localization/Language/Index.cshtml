@@ -1,4 +1,5 @@
 ﻿@page
+@using Humanizer
 @model IndexModel
 
 <div class="header">
@@ -64,9 +65,9 @@
                                 <td>@language.Enabled</td>
 
                                 <td>
-                                    <a asp-page="Edit" asp-route-id="@language.Id" class="btn btn-primary">
+                                    <button type="button" class="btn btn-primary" onclick="openModal(@language.Id)">
                                         <i class="fa-solid fa-pencil"></i>
-                                    </a>
+                                    </button>
                                 </td>
                             </tr>
                         }
@@ -117,5 +118,18 @@
                 }
             });
         });
+    </script>
+
+    <script>
+        function openModal(id) {
+            fetch(location.href + "?handler=GetLanguage&id=" + id)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("@($"{nameof(Model.Language)}_{nameof(Model.Language.Name)}")").value = data.@nameof(Model.Language.Name).Camelize();
+                    document.getElementById("@($"{nameof(Model.Language)}_{nameof(Model.Language.Code)}")").value = data.@nameof(Model.Language.Code).Camelize();
+                    document.getElementById("@($"{nameof(Model.Language)}_{nameof(Model.Language.SortOrder)}")").value = data.@nameof(Model.Language.SortOrder).Camelize();
+                    document.getElementById("@($"{nameof(Model.Language)}_{nameof(Model.Language.Enabled)}")").checked = data.@nameof(Model.Language.Enabled).Camelize();
+                });
+        }
     </script>
 }

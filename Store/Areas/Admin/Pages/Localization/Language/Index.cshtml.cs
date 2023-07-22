@@ -74,4 +74,28 @@ public class IndexModel : PageModel
 
         return new JsonResult(language);
     }
+
+    public async Task<JsonResult> OnPostUpdateLanguageAsync()
+    {
+        if (!ModelState.IsValid)
+        {
+            return new JsonResult(false);
+        }
+
+        var codeChanged = await _service.GetCodeAsync(Language.Id) != Language.Code;
+        var codeExists = await _service.ExistsAsync(Language.Code);
+
+        if (codeChanged && codeExists)
+        {
+            ModelState.AddModelError(
+                $"{nameof(Language)}.{nameof(Language.Code)}",
+                SharedLocalizer["Code already exists"]);
+
+            return new JsonResult(false);
+        }
+
+        await _service.UpdateAsync(Language);
+
+        return new JsonResult(true);
+    }
 }

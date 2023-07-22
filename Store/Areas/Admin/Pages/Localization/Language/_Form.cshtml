@@ -1,6 +1,6 @@
 ﻿@model LanguageView
 
-<form id="language" method="post">
+<form id="language" asp-page-handler="create" method="post">
     @if (Model.Id > 0)
     {
         <input asp-for="@Model.Id" />

@@ -3,9 +3,9 @@
 
 <div class="header">
     <div class="float-end">
-        <a asp-page="Create" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create">
             <i class="fa-solid fa-plus"></i>
-        </a>
+        </button>
 
         <button class="btn btn-danger" type="submit" form="languages">
             <i class="fa-solid fa-trash-can"></i>
@@ -83,7 +83,29 @@
     </div>
 </div>
 
+<div class="modal fade" id="create" tabindex="-1" aria-labelledby="createTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createTitle">@Model.Localizer["Add"]</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="@Model.CommonLocalizer["Close"]"></button>
+            </div>
+            <div class="modal-body">
+                <partial name="_Form" for="Language" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@Model.CommonLocalizer["Close"]</button>
+                <button type="submit" form="language" class="btn btn-primary">@Model.CommonLocalizer["Save"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var mainCheckbox = document.getElementById("select");

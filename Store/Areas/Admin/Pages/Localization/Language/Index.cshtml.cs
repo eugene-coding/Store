@@ -68,11 +68,11 @@ public class IndexModel : PageModel
         return RedirectToPage();
     }
 
-    public async Task<JsonResult> OnGetGetLanguageAsync(int id)
+    public async Task<IActionResult> OnGetGetLanguageAsync(int id)
     {
-        var language = await _service.GetAsync(id);
+        Language = await _service.GetAsync(id) ?? new();
 
-        return new JsonResult(language);
+        return Partial("_Form", Language);
     }
 
     public async Task<JsonResult> OnPostUpdateLanguageAsync()

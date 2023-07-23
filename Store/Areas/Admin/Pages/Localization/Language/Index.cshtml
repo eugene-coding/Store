@@ -1,5 +1,6 @@
 ﻿@page
 @using Humanizer
+@using static System.Net.Mime.MediaTypeNames;
 @model IndexModel
 
 <div class="header">
@@ -84,6 +85,7 @@
     </div>
 </div>
 
+
 <div class="modal fade" id="create" tabindex="-1" aria-labelledby="createTitle" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -95,6 +97,7 @@
                 <partial name="_Form" for="Language" />
             </div>
             <div class="modal-footer">
+                <button onclick="update()">Обновить</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@Model.CommonLocalizer["Close"]</button>
                 <button type="submit" form="language" class="btn btn-primary">@Model.CommonLocalizer["Save"]</button>
             </div>
@@ -125,6 +128,31 @@
             fetch(location.href + "?handler=GetLanguage&id=" + id)
                 .then(response => response.text())
                 .then(data => document.getElementById("modal-content").innerHTML = data);
+        }
+
+        function update() {
+            const entity = {
+                id: 10,
+                name: "1",
+                code: "25",
+                sortOrder: 12,
+                enabled: true
+            };
+
+            fetch(location.href + "?handler=UpdateLanguage", {  // Replace 'Index' with your Razor Page name
+                method: 'POST',
+                headers: {
+                    'Content-Type': @Application.Json
+                        },
+                body: JSON.stringify(entity)
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                })
+                .catch(error => {
+                    alert(error);
+                });
         }
     </script>
 }

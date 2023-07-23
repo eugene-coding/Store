@@ -2,10 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
 
+using Newtonsoft.Json;
+
 using Store.Areas.Admin.Services;
 
 namespace Store.Areas.Admin.Pages.Localization.Language;
 
+[IgnoreAntiforgeryToken]
 public class IndexModel : PageModel
 {
     private readonly ILanguageService _service;
@@ -56,13 +59,16 @@ public class IndexModel : PageModel
 
     public async Task<JsonResult> OnPostUpdateLanguageAsync()
     {
+        string requestBody = await new StreamReader(Request.Body).ReadToEndAsync();
+        var entity = JsonConvert.DeserializeObject<LanguageView>(requestBody); 
+
         if (!ModelState.IsValid)
         {
             return new JsonResult(false);
         }
 
-        var codeChanged = await _service.GetCodeAsync(Language.Id) != Language.Code;
-        var codeExists = await _service.ExistsAsync(Language.Code);
+        var codeChanged = await _service.GetCodeAsync(entity.Id) != entity.Code;
+        var codeExists = await _service.ExistsAsync(entity.Code);
 
         if (codeChanged && codeExists)
         {
@@ -73,7 +79,7 @@ public class IndexModel : PageModel
             return new JsonResult(false);
         }
 
-        await _service.UpdateAsync(Language);
+        await _service.UpdateAsync(entity);
 
         return new JsonResult(true);
     }

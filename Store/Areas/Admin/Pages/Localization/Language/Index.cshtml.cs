@@ -47,27 +47,6 @@ public class IndexModel : PageModel
         return RedirectToPage();
     }
 
-    public async Task<IActionResult> OnPostCreateAsync()
-    {
-        if (!ModelState.IsValid)
-        {
-            return Page();
-        }
-
-        if (await _service.ExistsAsync(Language.Code))
-        {
-            ModelState.AddModelError(
-                $"{nameof(Language)}.{nameof(Language.Code)}",
-                SharedLocalizer["Language already exists"]);
-
-            return Page();
-        }
-
-        await _service.AddAsync(Language);
-
-        return RedirectToPage();
-    }
-
     public async Task<IActionResult> OnGetGetLanguageAsync(int id)
     {
         Language = await _service.GetAsync(id) ?? new();

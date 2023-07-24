@@ -60,15 +60,15 @@ public class IndexModel : PageModel
     public async Task<JsonResult> OnPostUpdateLanguageAsync()
     {
         string requestBody = await new StreamReader(Request.Body).ReadToEndAsync();
-        var entity = JsonConvert.DeserializeObject<LanguageView>(requestBody); 
+        var language = JsonConvert.DeserializeObject<LanguageView>(requestBody);
 
         if (!ModelState.IsValid)
         {
             return new JsonResult(false);
         }
 
-        var codeChanged = await _service.GetCodeAsync(entity.Id) != entity.Code;
-        var codeExists = await _service.ExistsAsync(entity.Code);
+        var codeChanged = await _service.GetCodeAsync(language.Id) != language.Code;
+        var codeExists = await _service.ExistsAsync(language.Code);
 
         if (codeChanged && codeExists)
         {
@@ -79,7 +79,7 @@ public class IndexModel : PageModel
             return new JsonResult(false);
         }
 
-        await _service.UpdateAsync(entity);
+        await _service.UpdateAsync(language);
 
         return new JsonResult(true);
     }

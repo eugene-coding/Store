@@ -86,14 +86,14 @@
 </div>
 
 
-<div class="modal fade" id="create" tabindex="-1" aria-labelledby="createTitle" aria-hidden="true">
+<div class="modal fade" id="@IndexModel.ModalId" tabindex="-1" aria-labelledby="createTitle" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="createTitle">@Model.Localizer["Add"]</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="@Model.CommonLocalizer["Close"]"></button>
             </div>
-            <div id="modal-content" class="modal-body">
+            <div id="@IndexModel.ModalContentId" class="modal-body">
                 <partial name="_Form" for="Language" />
             </div>
             <div class="modal-footer">
@@ -127,7 +127,7 @@
         function openModal(id) {
             fetch(location.href + "?handler=GetLanguage&id=" + id)
                 .then(response => response.text())
-                .then(data => document.getElementById("modal-content").innerHTML = data);
+                .then(data => document.getElementById("@IndexModel.ModalContentId").innerHTML = data)
         }
 
         function update() {

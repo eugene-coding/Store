@@ -11,6 +11,9 @@ namespace Store.Areas.Admin.Pages.Localization.Language;
 [IgnoreAntiforgeryToken]
 public class IndexModel : PageModel
 {
+    public const string ModalId = "modal";
+    public const string ModalContentId = "modal-content";
+
     private readonly ILanguageService _service;
 
     public IndexModel(IStringLocalizer<IndexModel> localizer,

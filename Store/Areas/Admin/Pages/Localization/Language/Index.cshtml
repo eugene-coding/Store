@@ -137,29 +137,30 @@
                 })
         }
 
+        // When we load the modal form dynamically, the prefix is missing
         function update() {
             const entity = {
-                id: 10,
-                name: "1",
-                code: "25",
-                sortOrder: 12,
-                enabled: true
-            };
+        @nameof(Model.Language.Id).Camelize(): document.getElementById("@(nameof(Model.Language.Id))").value,
+        @nameof(Model.Language.Name).Camelize(): document.getElementById("@(nameof(Model.Language.Name))").value,
+        @nameof(Model.Language.Code).Camelize(): document.getElementById("@(nameof(Model.Language.Code))").value,
+        @nameof(Model.Language.SortOrder).Camelize(): document.getElementById("@(nameof(Model.Language.SortOrder))").value,
+        @nameof(Model.Language.Enabled).Camelize(): document.getElementById("@(nameof(Model.Language.Enabled))").checked,
+                    };
 
-            fetch(location.href + "?handler=UpdateLanguage", {  // Replace 'Index' with your Razor Page name
-                method: 'POST',
-                headers: {
-                    'Content-Type': @Application.Json
-                        },
-                body: JSON.stringify(entity)
+        fetch(location.href + "?handler=UpdateLanguage", {  // Replace 'Index' with your Razor Page name
+            method: "@HttpMethod.Post.Method",
+            headers: {
+                "@HeaderNames.ContentType": "@MediaTypeNames.Application.Json"
+            },
+            body: JSON.stringify(entity)
+        })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
             })
-                .then(response => response.text())
-                .then(data => {
-                    alert(data);
-                })
-                .catch(error => {
-                    alert(error);
-                });
-        }
+            .catch(error => {
+                alert(error);
+            });
+                                                                        }
     </script>
 }

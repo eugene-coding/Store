@@ -106,6 +106,8 @@
 </div>
 
 @section Scripts {
+    <script src="~/lib/popper.js/umd/popper.min.js" asp-append-version="true"></script>
+
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
@@ -128,6 +130,10 @@
             fetch(location.href + "?handler=GetLanguage&id=" + id)
                 .then(response => response.text())
                 .then(data => document.getElementById("@IndexModel.ModalContentId").innerHTML = data)
+                .then(() => {
+                    const element = document.getElementById("@IndexModel.ModalId");
+                    new bootstrap.Modal(element).show();
+                })
         }
 
         function update() {

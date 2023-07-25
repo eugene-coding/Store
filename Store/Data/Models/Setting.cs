@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Store.Data.Models;
 
@@ -10,6 +11,13 @@ namespace Store.Data.Models;
 [Comment("Contains site settings.")]
 public class Setting
 {
+    [SetsRequiredMembers]
+    public Setting(string key, int value)
+    {
+        Key = key;
+        Value = value.ToString();
+    }
+
     /// <summary>
     /// Setting ID.
     /// </summary>

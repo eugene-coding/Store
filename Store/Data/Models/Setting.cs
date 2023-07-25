@@ -17,10 +17,10 @@ public class Setting
     /// <param name="key">The key that defines the setting.</param>
     /// <param name="value">Setting value.</param>
     [SetsRequiredMembers]
-    public Setting(string key, int value)
+    public Setting(string key, string value)
     {
         Key = key;
-        Value = value.ToString();
+        Value = value;
     }
 
     /// <summary>

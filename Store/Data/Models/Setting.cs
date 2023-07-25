@@ -11,6 +11,11 @@ namespace Store.Data.Models;
 [Comment("Contains site settings.")]
 public class Setting
 {
+    /// <summary>
+    /// Creates the <see cref="Setting"/> instance.
+    /// </summary>
+    /// <param name="key">The key that defines the setting.</param>
+    /// <param name="value">Setting value.</param>
     [SetsRequiredMembers]
     public Setting(string key, int value)
     {

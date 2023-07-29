@@ -12,10 +12,14 @@ namespace Store.Areas.Admin.Pages.Localization.Language;
 public class IndexModel : PageModel
 {
     public const string FormId = "language";
+    public const string AddLanguageButtonId = $"add-{FormId}";
+    public const string EditLanguageName = $"edit-{FormId}";
     public const string CheckboxName = "checkbox";
     public const string MainCheckboxId = $"main-{CheckboxName}";
     public const string ModalId = "modal";
-    public const string ModalContentId = "modal-content";
+    public const string ModalContentId = $"{ModalId}-content";
+    public const string ModalTitleId = $"{ModalId}-title";
+    public const string ModalSubmitButton = $"{ModalId}-submit";
 
     private readonly ILanguageService _service;
 
@@ -36,9 +40,6 @@ public class IndexModel : PageModel
     public IEnumerable<Breadcrumb> Breadcrumbs { get; private set; } = Enumerable.Empty<Breadcrumb>();
     public IReadOnlyCollection<LanguageView> Languages { get; private set; } = Array.Empty<LanguageView>();
 
-    [BindProperty]
-    public LanguageView Language { get; set; } = new();
-
     public async Task OnGetAsync(string sort)
     {
         Breadcrumbs = new Breadcrumb[]
@@ -56,19 +57,51 @@ public class IndexModel : PageModel
         return RedirectToPage();
     }
 
-    public async Task<IActionResult> OnGetGetLanguageAsync(int id)
+    public IActionResult OnGetAddForm()
     {
-        Language = await _service.GetAsync(id) ?? new();
-
-        return Partial("_Form", Language);
+        return Partial("_Form", new LanguageView());
     }
 
-    public async Task<JsonResult> OnPostUpdateLanguageAsync()
+    public async Task<IActionResult> OnGetEditFormAsync(int id)
     {
-        string requestBody = await new StreamReader(Request.Body).ReadToEndAsync();
-        var language = JsonConvert.DeserializeObject<LanguageView>(requestBody);
+        var language = await _service.GetAsync(id);
 
-        if (!ModelState.IsValid)
+        if (language is null)
+        {
+            return NotFound();
+        }
+
+        return Partial("_Form", language);
+    }
+
+    public async Task<IActionResult> OnPostAddLanguageAsync()
+    {
+        var language = await DeserializeLanguageViewAsync();
+
+        if (language is null || !ModelState.IsValid)
+        {
+            return new JsonResult(false);
+        }
+
+        if (await _service.ExistsAsync(language.Code))
+        {
+            ModelState.AddModelError(
+                $"{nameof(language.Code)}",
+                SharedLocalizer["Code already exists"]);
+
+            return new JsonResult(false);
+        }
+
+        await _service.AddAsync(language);
+
+        return new JsonResult(true);
+    }
+
+    public async Task<JsonResult> OnPostEditLanguageAsync()
+    {
+        var language = await DeserializeLanguageViewAsync();
+
+        if (language is null || !ModelState.IsValid)
         {
             return new JsonResult(false);
         }
@@ -79,7 +112,7 @@ public class IndexModel : PageModel
         if (codeChanged && codeExists)
         {
             ModelState.AddModelError(
-                $"{nameof(Language)}.{nameof(Language.Code)}",
+                $"{nameof(language.Code)}",
                 SharedLocalizer["Code already exists"]);
 
             return new JsonResult(false);
@@ -88,5 +121,12 @@ public class IndexModel : PageModel
         await _service.UpdateAsync(language);
 
         return new JsonResult(true);
+    }
+
+    private async Task<LanguageView?> DeserializeLanguageViewAsync()
+    {
+        var requestBody = await new StreamReader(Request.Body).ReadToEndAsync();
+        var converted = JsonConvert.DeserializeObject<LanguageView>(requestBody);
+        return converted;
     }
 }

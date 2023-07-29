@@ -63,6 +63,7 @@ public class LanguageService : ILanguageService
         return await Languages
             .Where(language => language.Id == id)
             .Cast<LanguageView>()
+            .AsNoTracking()
             .SingleOrDefaultAsync();
     }
 
@@ -70,6 +71,7 @@ public class LanguageService : ILanguageService
     {
         return await Languages
             .Cast<LanguageView>()
+            .AsNoTracking()
             .ToListAsync();
     }
 
@@ -82,7 +84,9 @@ public class LanguageService : ILanguageService
             query = query.OrderBy(sort);
         }
 
-        return await query.Cast<LanguageView>()
+        return await query
+            .Cast<LanguageView>()
+            .AsNoTracking()
             .ToListAsync();
     }
 

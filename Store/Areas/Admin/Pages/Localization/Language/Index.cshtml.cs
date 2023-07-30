@@ -38,16 +38,13 @@ public class IndexModel : PageModel
     public IStringLocalizer<LanguageResource> SharedLocalizer { get; }
     public IStringLocalizer<CommonResource> CommonLocalizer { get; }
     public IEnumerable<Breadcrumb> Breadcrumbs { get; private set; } = Enumerable.Empty<Breadcrumb>();
-    public IReadOnlyCollection<LanguageView> Languages { get; private set; } = Array.Empty<LanguageView>();
 
-    public async Task OnGetAsync(string sort)
+    public void OnGet()
     {
         Breadcrumbs = new Breadcrumb[]
         {
             new Breadcrumb(SharedLocalizer["Heading title"])
         };
-
-        Languages = await _service.GetAsync(sort);
     }
 
     public async Task<IActionResult> OnPostAsync(IReadOnlyCollection<int> selected)
@@ -72,6 +69,13 @@ public class IndexModel : PageModel
         }
 
         return Partial("_Form", language);
+    }
+
+    public async Task<IActionResult> OnGetListAsync()
+    {
+        var languages = await _service.GetAsync();
+
+        return Partial("_List", languages);
     }
 
     public async Task<IActionResult> OnPostAddLanguageAsync()

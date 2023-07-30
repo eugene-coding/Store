@@ -51,35 +51,12 @@
                     </tr>
                 </thead>
 
-                <tbody>
-                    @if (Model.Languages.Count > 0)
-                    {
-                        @foreach (var language in Model.Languages)
-                        {
-                            <tr>
-                                <th scope="row">
-                                    <input class="form-check-input" type="checkbox" name="@IndexModel.CheckboxName" value="@language.Id" />
-                                </th>
-
-                                <td>@language.Name</td>
-                                <td>@language.Code</td>
-                                <td>@language.SortOrder</td>
-                                <td>@language.Enabled</td>
-
-                                <td>
-                                    <button type="button" class="btn btn-primary" name="@IndexModel.EditLanguageName" data-id="@language.Id">
-                                        <i class="fa-solid fa-pencil"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td scope="row" colspan="6" class="text-center">@Model.Localizer["No result"]</td>
-                        </tr>
-                    }
+                <tbody id="list">
+                    <tr>
+                        <td scope="row" colspan="6" class="text-center">
+                            <i class="fa-solid fa-spinner fa-spin fa-2xl m-3"></i>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </form>
@@ -113,14 +90,29 @@
     }
 
     <script>
-        var mainCheckbox = document.getElementById("@IndexModel.MainCheckboxId");
-        var checkboxes = document.getElementsByName("@IndexModel.CheckboxName");
+        function getList() {
+            fetch(location.href + "?handler=List")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("list").innerHTML = data
+                })
+        }
+
+        getList();
+
+        const mainCheckbox = document.getElementById("@IndexModel.MainCheckboxId");
+        const checkboxes = document.getElementsByName("@IndexModel.CheckboxName");
 
         mainCheckbox.addEventListener("change", () => {
             checkboxes.forEach(checkbox => {
                 checkbox.checked = mainCheckbox.checked;
             });
         });
+
+
+
+
+
 
         document.getElementById("@IndexModel.AddLanguageButtonId").addEventListener("click", event => {
             fetch(location.href + "?handler=AddForm")
@@ -129,11 +121,11 @@
                     document.getElementById("@IndexModel.ModalTitleId").innerHTML = "@(Model.Localizer["Add"])";
                     document.getElementById("@IndexModel.ModalContentId").innerHTML = data
 
-                    // настраиваем сабмит событие для создания языка
                     document.getElementById("@IndexModel.FormId").addEventListener("submit", event => {
                         event.preventDefault();
                         add();
-                        alert("add");
+
+                        getList();
                     })
                 })
         })
@@ -153,7 +145,8 @@
                         document.getElementById("@IndexModel.FormId").addEventListener("submit", event => {
                             event.preventDefault();
                             edit();
-                            alert("Edit");
+
+                            getList()
                         });
 
                         const element = document.getElementById("@IndexModel.ModalId");

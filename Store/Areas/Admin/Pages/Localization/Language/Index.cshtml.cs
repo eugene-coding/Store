@@ -126,7 +126,7 @@ public class IndexModel : PageModel
     private async Task<LanguageView?> DeserializeLanguageViewAsync()
     {
         var requestBody = await new StreamReader(Request.Body).ReadToEndAsync();
-        var converted = JsonConvert.DeserializeObject<LanguageView>(requestBody);
-        return converted;
+
+        return JsonConvert.DeserializeObject<LanguageView>(requestBody);
     }
 }

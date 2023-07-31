@@ -11,17 +11,6 @@ namespace Store.Areas.Admin.Pages.Localization.Language;
 [IgnoreAntiforgeryToken]
 public class IndexModel : PageModel
 {
-    public const string FormId = "language";
-    public const string AddLanguageButtonId = $"add-{FormId}";
-    public const string EditLanguageName = $"edit-{FormId}";
-    public const string CheckboxName = "checkbox";
-    public const string MainCheckboxId = $"main-{CheckboxName}";
-    public const string TableBodyId = "languages-list";
-    public const string ModalId = "modal";
-    public const string ModalContentId = $"{ModalId}-content";
-    public const string ModalTitleId = $"{ModalId}-title";
-    public const string ModalSubmitButton = $"{ModalId}-submit";
-
     private readonly ILanguageService _service;
 
     public IndexModel(IStringLocalizer<IndexModel> localizer,

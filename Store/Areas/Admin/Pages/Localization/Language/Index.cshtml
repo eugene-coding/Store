@@ -6,7 +6,7 @@
 
 <div class="header">
     <div class="float-end">
-        <button id="@IndexModel.AddLanguageButtonId" type="button" class="btn btn-primary">
+        <button id="@JavascriptVariables.Instance.AddLanguageButtonId" type="button" class="btn btn-primary">
             <i class="fa-solid fa-plus"></i>
         </button>
 
@@ -28,7 +28,7 @@
                 <thead>
                     <tr>
                         <th scope="col">
-                            <input id="@IndexModel.MainCheckboxId" class="form-check-input" type="checkbox" />
+                            <input id="@JavascriptVariables.Instance.MainCheckboxId" class="form-check-input" type="checkbox" />
                         </th>
 
                         <th scope="col">
@@ -51,7 +51,7 @@
                     </tr>
                 </thead>
 
-                <tbody id="@IndexModel.TableBodyId">
+                <tbody id="@JavascriptVariables.Instance.TableBodyId">
                     <tr>
                         <td scope="row" colspan="6" class="text-center">
                             <i class="fa-solid fa-spinner fa-spin fa-xl m-3"></i>
@@ -64,19 +64,19 @@
 </div>
 
 
-<div class="modal fade" id="@IndexModel.ModalId" tabindex="-1" aria-labelledby="createTitle" aria-hidden="true">
+<div class="modal fade" id="@JavascriptVariables.Instance.ModalId" tabindex="-1" aria-labelledby="createTitle" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 id="@IndexModel.ModalTitleId" class="modal-title"></h5>
+                <h5 id="@JavascriptVariables.Instance.ModalTitleId" class="modal-title"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="@Model.CommonLocalizer["Close"]"></button>
             </div>
-            <div id="@IndexModel.ModalContentId" class="modal-body text-center">
+            <div id="@JavascriptVariables.Instance.ModalContentId" class="modal-body text-center">
                 <i class="fa-solid fa-spinner fa-spin fa-2xl m-5"></i>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@Model.CommonLocalizer["Close"]</button>
-                <button type="submit" form="@IndexModel.FormId" class="btn btn-primary">@Model.CommonLocalizer["Save"]</button>
+                <button type="submit" form="@JavascriptVariables.Instance.FormId" class="btn btn-primary">@Model.CommonLocalizer["Save"]</button>
             </div>
         </div>
     </div>
@@ -92,25 +92,27 @@
     
 
     <script>
-        const element = document.getElementById("@IndexModel.ModalId");
+        const element = document.getElementById("@JavascriptVariables.Instance.ModalId");
         const modal = new bootstrap.Modal(element);
 
-        setupCheckboxes("@IndexModel.MainCheckboxId", "@IndexModel.CheckboxName"); 
-        updateList("List", "@IndexModel.TableBodyId");
+        var variables = @Html.Raw(JavascriptVariables.Serialize())
+
+        setupCheckboxes(); 
+        updateList("List", "@JavascriptVariables.Instance.TableBodyId");
        
-        document.getElementById("@IndexModel.AddLanguageButtonId").addEventListener("click", event => {
-            openAddForm("AddForm", modal, "@IndexModel.ModalTitleId", "@IndexModel.ModalContentId", "@Model.Localizer["Add"]");
+        document.getElementById("@JavascriptVariables.Instance.AddLanguageButtonId").addEventListener("click", event => {
+            openAddForm("AddForm", modal, "@JavascriptVariables.Instance.ModalTitleId", "@JavascriptVariables.Instance.ModalContentId", "@Model.Localizer["Add"]", "@JavascriptVariables.Instance.FormId");
         })
 
         // function configureSubmitOnAdd(){
-        //     document.getElementById("@IndexModel.FormId").addEventListener("submit", event => {
+        //     document.getElementById("@JavascriptVariables.Instance.FormId").addEventListener("submit", event => {
         //         event.preventDefault();
         //         add();
         //         getList();
         //     })
         // }
 
-        // const editButtons = document.getElementsByName("@IndexModel.EditLanguageName");
+        // const editButtons = document.getElementsByName("@JavascriptVariables.Instance.EditLanguageName");
 
         // editButtons.forEach(editButton => {
         //     const id = editButton.dataset.id;
@@ -119,10 +121,10 @@
         //         fetch(location.href + "?handler=EditForm&id=" + id)
         //             .then(response => response.text())
         //             .then(data => {
-        //                 document.getElementById("@IndexModel.ModalTitleId").innerHTML = "@(Model.Localizer["Edit"])";
-        //                 document.getElementById("@IndexModel.ModalContentId").innerHTML = data
+        //                 document.getElementById("@JavascriptVariables.Instance.ModalTitleId").innerHTML = "@(Model.Localizer["Edit"])";
+        //                 document.getElementById("@JavascriptVariables.Instance.ModalContentId").innerHTML = data
 
-        //                 document.getElementById("@IndexModel.FormId").addEventListener("submit", event => {
+        //                 document.getElementById("@JavascriptVariables.Instance.FormId").addEventListener("submit", event => {
         //                     event.preventDefault();
         //                     edit();
 

@@ -27,7 +27,7 @@ public class IndexModel : PageModel
     public IStringLocalizer<IndexModel> Localizer { get; }
     public IStringLocalizer<LanguageResource> SharedLocalizer { get; }
     public IStringLocalizer<CommonResource> CommonLocalizer { get; }
-    public IEnumerable<Breadcrumb> Breadcrumbs { get; private set; } = Enumerable.Empty<Breadcrumb>();
+    public IEnumerable<Breadcrumb> Breadcrumbs { get; private set; } = Array.Empty<Breadcrumb>();
 
     public void OnGet()
     {

@@ -1,12 +1,24 @@
+let modal;
+let modalTitle;
+let modalContent;
+
+document.addEventListener("DOMContentLoaded", () => {
+    updateList();
+    setupCheckboxes();
+
+    modal = getModal();
+
+    modalTitle = document.getElementById(variables.ModalTitleId);
+    modalContent = document.getElementById(variables.ModalContentId);
+})
+
 /**
  * Sets checkboxes in the table so that when the main checkbox is clicked, 
  * all other checkboxes take on its current state.
- * @param {string} mainCheckboxId Main checkbox ID.
- * @param {string} checkboxName Checkbox name.
  */
-function setupCheckboxes(mainCheckboxId, checkboxName) {
-    const mainCheckbox = document.getElementById(mainCheckboxId);
-    const checkboxes = document.getElementsByName(checkboxName);
+function setupCheckboxes() {
+    const mainCheckbox = document.getElementById(variables.MainCheckboxId);
+    const checkboxes = document.getElementsByName(variables.CheckboxName);
 
     mainCheckbox.addEventListener("change", () => {
         checkboxes.forEach(checkbox => {
@@ -17,92 +29,127 @@ function setupCheckboxes(mainCheckboxId, checkboxName) {
 
 /**
  * Updates the list of languages.
- * @param {string} handler Handler name.
- * @param {string} listParentId The ID of the parent element within which the list is to be updated.
  */
-function updateList(handler, listParentId) {
-    fetch(location.href + "?handler=" + handler)
+function updateList() {
+    fetch(location.href + "?handler=" + variables.UpdateListHandler)
         .then(response => response.text())
-        .then(data => {
-            document.getElementById(listParentId).innerHTML = data
-        });
+        .then(data => document.getElementById(variables.ListParentId).innerHTML = data);
+}
+
+function getModal() {
+    const element = document.getElementById(variables.ModalId);
+    return new bootstrap.Modal(element);
+}
+
+function addOpenAddFormEventListener(modalTitle) {
+    document.getElementById(variables.AddLanguageButtonId).addEventListener("click", event => {
+        openAddForm(modalTitle);
+    })
+}
+
+function addOpenEditFormEventListener(modalTitle) {
+    document.getElementsByName(variables.EditLanguageButtonName).addEventListener("click", event => {
+        openEditForm(modalTitle);
+    })
 }
 
 /**
  * Opens a modal window and loads the form for adding a new language.
- * @param {string} handler Handler name.
- * @param {Modal} modal Modal window on which the form is located.
- * @param {string} titleId Modal title ID.
- * @param {string} contentId Modal content ID.
  * @param {string} title Title text.
  */
-function openAddForm(handler, modal, titleId, contentId, title) {
-    document.getElementById(titleId).innerHTML = title;
+function openAddForm(title) {
+    openModal(title);
 
-    modal.show();
-
-    fetch(location.href + "?handler=" + handler)
+    fetch(location.href + "?handler=" + variables.OpenAddFormHandler)
         .then(response => response.text())
-        .then(data => document.getElementById(contentId).innerHTML = data)
+        .then(data => {
+            modalContent.innerHTML = data;
+            configureAddFormSubmit();
+        })
 }
 
-function configureEventListenerOnAdd() {
-    document.getElementById("@IndexModel.FormId").addEventListener("submit", event => {
+function openEditForm(title) {
+    openModal(title);
+
+    fetch(location.href + "?handler=" + variables.OpenEditFormHandler)
+        .then(response => response.text())
+        .then(data => {
+            modalContent.innerHTML = data;
+            configureEditFormSubmit();
+        })
+}
+
+function openModal(title) {
+    modalTitle.innerHTML = title;
+    modal.show(title);
+}
+
+function configureAddFormSubmit() {
+    const form = document.getElementById(variables.FormId);
+
+    form.addEventListener("submit", event => {
         event.preventDefault();
-        add();
-        getList();
+
+        addLanguage()
+            .then(() => {
+                modal.hide();
+                updateList();
+            })
+            .catch(alert("Что-то пошло не так"));
     })
 }
 
-// function configureSubmitOnAdd(){
-//     document.getElementById("@IndexModel.FormId").addEventListener("submit", event => {
-//         event.preventDefault();
-//         add();
-//         getList();
-//     })
-// }
+function configureEditFormSubmit() {
+    const form = document.getElementById(variables.FormId);
+
+    form.addEventListener("submit", event => {
+        event.preventDefault();
+
+        updateLanguage()
+            .then(() => {
+                modal.hide();
+                updateList();
+            })
+            .catch(alert("Что-то пошло не так"));;
+    });
+}
 
 /**
  * Adds a new language.
- * @param {any} handler Handler name.
- * @param {any} formId Form ID.
  */
-function addLanguage(handler, formId) {
-    submitForm(handler, formId);
+function addLanguage() {
+    return submitForm(variables.AddLanguageHandler);
 }
 
 /**
  * Updates the language.
- * @param {any} handler Handler name.
- * @param {any} formId Form ID.
  */
-function updateLanguage(handler, formId) {
-    submitForm(handler, formId);
+function updateLanguage() {
+    // Дописать параметры 
+    return submitForm(variables.UpdateLanguageHandler);
 }
 
 /**
  * Submits the form.
  * @param {string} handler Handler name.
- * @param {string} formId Form ID.
  * @returns Promise, which is an asynchronous object representing the final state of the request.
  */
-function submitForm(handler, formId) {
+function submitForm(handler) {
     return fetch(location.href + "?handler=" + handler, {
         method: "POST",
         headers: {
             "content-type": "application/json"
         },
-        body: convertFormDataToJson(formId)
+        body: convertFormDataToJson()
     });
 }
 
 /**
  * Converts form data to JSON.
- * @param {string} formId Form ID.
  * @returns Form data in JSON.
  */
-function convertFormDataToJson(formId) {
-    const form = document.getElementById(formId);
+function convertFormDataToJson() {
+    const form = document.getElementById(variables.FormId);
     const formData = new FormData(form);
 
     const entity = {};

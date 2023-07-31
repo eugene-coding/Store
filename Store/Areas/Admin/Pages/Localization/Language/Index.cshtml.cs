@@ -91,7 +91,7 @@ public class IndexModel : PageModel
         return new JsonResult(true);
     }
 
-    public async Task<JsonResult> OnPostEditLanguageAsync()
+    public async Task<JsonResult> OnPostUpdateLanguageAsync()
     {
         var language = await DeserializeLanguageViewAsync();
 

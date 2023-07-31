@@ -6,7 +6,7 @@
 
 <div class="header">
     <div class="float-end">
-        <button id="@IndexModel.AddLanguageButtonId" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#@IndexModel.ModalId">
+        <button id="@IndexModel.AddLanguageButtonId" type="button" class="btn btn-primary">
             <i class="fa-solid fa-plus"></i>
         </button>
 
@@ -51,10 +51,10 @@
                     </tr>
                 </thead>
 
-                <tbody id="list">
+                <tbody id="@IndexModel.TableBodyId">
                     <tr>
                         <td scope="row" colspan="6" class="text-center">
-                            <i class="fa-solid fa-spinner fa-spin fa-2xl m-3"></i>
+                            <i class="fa-solid fa-spinner fa-spin fa-xl m-3"></i>
                         </td>
                     </tr>
                 </tbody>
@@ -83,159 +83,55 @@
 </div>
 
 @section Scripts {
-    <script src="~/lib/popper.js/umd/popper.min.js" asp-append-version="true"></script>
-
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 
+    <script src="~/lib/popper.js/umd/popper.min.js" asp-append-version="true"></script>
+    <script src="~/Areas/Admin/Pages/Localization/Language/Index.cshtml.js" asp-append-version="true"></script>
+    
+
     <script>
-        function getList() {
-            fetch(location.href + "?handler=List")
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("list").innerHTML = data
-                })
-        }
+        const element = document.getElementById("@IndexModel.ModalId");
+        const modal = new bootstrap.Modal(element);
 
-        getList();
-
-        const mainCheckbox = document.getElementById("@IndexModel.MainCheckboxId");
-        const checkboxes = document.getElementsByName("@IndexModel.CheckboxName");
-
-        mainCheckbox.addEventListener("change", () => {
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = mainCheckbox.checked;
-            });
-        });
-
-
-
-
-
-
+        setupCheckboxes("@IndexModel.MainCheckboxId", "@IndexModel.CheckboxName"); 
+        updateList("List", "@IndexModel.TableBodyId");
+       
         document.getElementById("@IndexModel.AddLanguageButtonId").addEventListener("click", event => {
-            fetch(location.href + "?handler=AddForm")
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("@IndexModel.ModalTitleId").innerHTML = "@(Model.Localizer["Add"])";
-                    document.getElementById("@IndexModel.ModalContentId").innerHTML = data
-
-                    document.getElementById("@IndexModel.FormId").addEventListener("submit", event => {
-                        event.preventDefault();
-                        add();
-
-                        getList();
-                    })
-                })
+            openAddForm("AddForm", modal, "@IndexModel.ModalTitleId", "@IndexModel.ModalContentId", "@Model.Localizer["Add"]");
         })
 
-        const editButtons = document.getElementsByName("@IndexModel.EditLanguageName");
+        // function configureSubmitOnAdd(){
+        //     document.getElementById("@IndexModel.FormId").addEventListener("submit", event => {
+        //         event.preventDefault();
+        //         add();
+        //         getList();
+        //     })
+        // }
 
-        editButtons.forEach(editButton => {
-            const id = editButton.dataset.id;
+        // const editButtons = document.getElementsByName("@IndexModel.EditLanguageName");
 
-            editButton.addEventListener("click", event => {
-                fetch(location.href + "?handler=EditForm&id=" + id)
-                    .then(response => response.text())
-                    .then(data => {
-                        document.getElementById("@IndexModel.ModalTitleId").innerHTML = "@(Model.Localizer["Edit"])";
-                        document.getElementById("@IndexModel.ModalContentId").innerHTML = data
+        // editButtons.forEach(editButton => {
+        //     const id = editButton.dataset.id;
 
-                        document.getElementById("@IndexModel.FormId").addEventListener("submit", event => {
-                            event.preventDefault();
-                            edit();
+        //     editButton.addEventListener("click", event => {
+        //         fetch(location.href + "?handler=EditForm&id=" + id)
+        //             .then(response => response.text())
+        //             .then(data => {
+        //                 document.getElementById("@IndexModel.ModalTitleId").innerHTML = "@(Model.Localizer["Edit"])";
+        //                 document.getElementById("@IndexModel.ModalContentId").innerHTML = data
 
-                            getList()
-                        });
+        //                 document.getElementById("@IndexModel.FormId").addEventListener("submit", event => {
+        //                     event.preventDefault();
+        //                     edit();
 
-                        const element = document.getElementById("@IndexModel.ModalId");
-                        new bootstrap.Modal(element).show();
-                    })
-            })
-        })
-    </script>
+        //                     getList()
+        //                 });
 
-    <script>
-        function add() {
-            fetch(location.href + "?handler=AddLanguage", {
-                method: "@HttpMethod.Post.Method",
-                headers: {
-                    "@HeaderNames.ContentType": "@MediaTypeNames.Application.Json"
-                },
-                body: createRequestBody()
-            })
-                .then(response => response.json())
-                .then(response => {
-                    if (response.ok) {
-                        alert("Успешно! Обновите список");
-                        return response.text()
-                    } else if (response.status === 400) {
-                        response.json().then(errors => {
-                            alert(errors);
-                        });
-                    } else {
-                        // Form submission encountered other errors
-                        // Handle and display appropriate error message
-                        alert("Третий блок: " + response.status);
-                        response.json().then(errors => {
-                            alert(errors);
-                        });
-                    }
-                })
-                .catch(error => {
-                    // Handle and display any general errors
-                });
-        }
-
-        function edit() {
-            fetch(location.href + "?handler=EditLanguage", {
-                method: "@HttpMethod.Post.Method",
-                headers: {
-                    "@HeaderNames.ContentType": "@MediaTypeNames.Application.Json"
-                },
-                body: createRequestBody()
-            })
-                .then(response => response.json())
-                .then(response => {
-                    if (response.ok) {
-                        alert("Успешно! Обновите список");
-                        return response.text()
-                    } else if (response.status === 400) {
-                        response.json().then(errors => {
-                            alert(errors);
-                        });
-                    } else {
-                        // Form submission encountered other errors
-                        // Handle and display appropriate error message
-                        alert("Третий блок: " + response.status);
-                        response.json().then(errors => {
-                            alert(errors);
-                        });
-                    }
-                })
-                .catch(error => {
-                    // Handle and display any general errors
-                });
-        }
-
-        function createRequestBody() {
-            const form = document.getElementById("@IndexModel.FormId");
-            const formData = new FormData(form);
-
-            const entity = {};
-
-            for (const key of formData.keys()) {
-                entity[camelize(key)] = formData.get(key);
-            }
-
-            return JSON.stringify(entity)
-        }
-
-        function camelize(str) {
-            return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
-                return index === 0 ? word.toLowerCase() : word.toUpperCase();
-            }).replace(/\s+/g, '');
-        }
+                        
+        //             })
+        //     })
+        // });
     </script>
 }

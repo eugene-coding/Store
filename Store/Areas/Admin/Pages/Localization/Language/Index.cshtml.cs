@@ -14,18 +14,15 @@ public class IndexModel : PageModel
     private readonly ILanguageService _service;
 
     public IndexModel(IStringLocalizer<IndexModel> localizer,
-        IStringLocalizer<LanguageResource> sharedLocalizer,
         IStringLocalizer<CommonResource> commonLocalizer,
         ILanguageService service)
     {
         Localizer = localizer;
-        SharedLocalizer = sharedLocalizer;
         CommonLocalizer = commonLocalizer;
         _service = service;
     }
 
     public IStringLocalizer<IndexModel> Localizer { get; }
-    public IStringLocalizer<LanguageResource> SharedLocalizer { get; }
     public IStringLocalizer<CommonResource> CommonLocalizer { get; }
     public IEnumerable<Breadcrumb> Breadcrumbs { get; private set; } = Array.Empty<Breadcrumb>();
 
@@ -33,7 +30,7 @@ public class IndexModel : PageModel
     {
         Breadcrumbs = new Breadcrumb[]
         {
-            new Breadcrumb(SharedLocalizer["Heading title"])
+            new Breadcrumb(Localizer["Heading title"])
         };
     }
 
@@ -81,7 +78,7 @@ public class IndexModel : PageModel
         {
             ModelState.AddModelError(
                 $"{nameof(language.Code)}",
-                SharedLocalizer["Code already exists"]);
+                Localizer["Code already exists"]);
 
             return new JsonResult(false);
         }
@@ -107,7 +104,7 @@ public class IndexModel : PageModel
         {
             ModelState.AddModelError(
                 $"{nameof(language.Code)}",
-                SharedLocalizer["Code already exists"]);
+                Localizer["Code already exists"]);
 
             return new JsonResult(false);
         }

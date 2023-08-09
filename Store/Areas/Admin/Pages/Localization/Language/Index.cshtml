@@ -1,7 +1,4 @@
 ﻿@page
-@using Microsoft.Net.Http.Headers;
-@using System.Net.Mime;
-@using System.Web;
 @model IndexModel
 
 <div class="header">
@@ -15,7 +12,7 @@
         </button>
     </div>
 
-    <h1>@Model.SharedLocalizer["Heading title"]</h1>
+    <h1>@Model.Localizer["Heading title"]</h1>
 
     <partial name="_Breadcrumbs" for="Breadcrumbs" />
 </div>
@@ -47,7 +44,7 @@
                             <a asp-route-sort="@nameof(LanguageView.Enabled)">@Html.DisplayNameForInnerType((LanguageView l) => l.Enabled)</a>
                         </th>
 
-                        <th scope="col">@Model.SharedLocalizer["Action"]</th>
+                        <th scope="col">@Model.Localizer["Action"]</th>
                     </tr>
                 </thead>
 

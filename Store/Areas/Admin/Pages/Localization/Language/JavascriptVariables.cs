@@ -13,27 +13,15 @@ public class JavascriptVariables
     public string AddLanguageHandler => "AddLanguage";
     public string UpdateLanguageHandler => "UpdateLanguage";
 
-
     public string FormId => "language";
-
-    public string AddLanguageButtonId = $"add-language";
-
-    public string EditLanguageButtonName => $"edit-language";
-
+    public string AddLanguageButtonId => "add-language";
+    public string EditLanguageButtonName => "edit-language";
     public string CheckboxName => "checkbox";
-
-    public string MainCheckboxId => $"main-checkbox";
-
+    public string MainCheckboxId => "main-checkbox";
     public string ListParentId => "languages-list";
-
     public string ModalId => "modal";
-
-    public string ModalContentId => $"modal-content";
-
-    public string ModalTitleId => $"modal-title";
-
-    [NonSerialized]
-    public string ModalSubmitButton = $"modal-submit";
+    public string ModalContentId => "modal-content";
+    public string ModalTitleId => "modal-title";
 
     private JavascriptVariables()
     {

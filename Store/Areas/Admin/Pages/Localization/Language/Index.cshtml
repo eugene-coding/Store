@@ -89,30 +89,10 @@
 
     <script src="~/lib/popper.js/umd/popper.min.js" asp-append-version="true"></script>
     <script src="~/Areas/Admin/Pages/Localization/Language/Index.cshtml.js" asp-append-version="true"></script>
-    
 
     <script>
-        const variables = @Html.Raw(JavascriptVariables.Serialize())
-
-            addOpenAddFormEventListener("@Model.Localizer["Add"]");
-
-                // function configureSubmitOnAdd(){
-                //     document.getElementById("@JavascriptVariables.Instance.FormId").addEventListener("submit", event => {
-                //         event.preventDefault();
-                //         add();
-                //         getList();
-                //     })
-                // }
-
-                // const editButtons = document.getElementsByName("@JavascriptVariables.Instance.EditLanguageButtonName");
-
-                // editButtons.forEach(editButton => {
-                //     const id = editButton.dataset.id;
-
-                //     editButton.addEventListener("click", event => {
-                //         fetch(location.href + "?handler=EditForm&id=" + id)
-                //            
-                //     })
-                // });
+        const variables = @Html.Raw(JavascriptVariables.Serialize());
+        const addText = "@Model.Localizer["Add"]";
+        const editText = "@Model.Localizer["Edit"]";
     </script>
 }

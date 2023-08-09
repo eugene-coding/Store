@@ -1,15 +1,23 @@
+/**
+ * Modal window.
+ */
 let modal;
+
+/**
+ * Modal window title.
+ */
 let modalTitle;
+
+/**
+ * Modal window content.
+ */
 let modalContent;
 
 document.addEventListener("DOMContentLoaded", () => {
     updateList();
     setupCheckboxes();
-
-    modal = getModal();
-
-    modalTitle = document.getElementById(variables.ModalTitleId);
-    modalContent = document.getElementById(variables.ModalContentId);
+    setModalVariables();
+    addOpenAddFormEventListener();
 })
 
 /**
@@ -28,37 +36,39 @@ function setupCheckboxes() {
 }
 
 /**
+ * Sets the modal window and its elements to variables.
+ */
+function setModalVariables() {
+    modal = getModal();
+
+    modalTitle = document.getElementById(variables.ModalTitleId);
+    modalContent = document.getElementById(variables.ModalContentId);
+}
+
+/**
  * Updates the list of languages.
  */
 function updateList() {
     fetch(location.href + "?handler=" + variables.UpdateListHandler)
         .then(response => response.text())
-        .then(data => document.getElementById(variables.ListParentId).innerHTML = data);
+        .then(data => document.getElementById(variables.ListParentId).innerHTML = data)
+        .then(() => addOpenEditFormEventListener());
 }
 
-function getModal() {
-    const element = document.getElementById(variables.ModalId);
-    return new bootstrap.Modal(element);
-}
-
-function addOpenAddFormEventListener(modalTitle) {
-    document.getElementById(variables.AddLanguageButtonId).addEventListener("click", event => {
-        openAddForm(modalTitle);
-    })
-}
-
-function addOpenEditFormEventListener(modalTitle) {
-    document.getElementsByName(variables.EditLanguageButtonName).addEventListener("click", event => {
-        openEditForm(modalTitle);
+/**
+ * Adds events to the add button to open add form on click.
+ */
+function addOpenAddFormEventListener() {
+    document.getElementById(variables.AddLanguageButtonId).addEventListener("click", () => {
+        openAddForm();
     })
 }
 
 /**
- * Opens a modal window and loads the form for adding a new language.
- * @param {string} title Title text.
+ * Opens the add language form.
  */
-function openAddForm(title) {
-    openModal(title);
+function openAddForm() {
+    openModal(addText);
 
     fetch(location.href + "?handler=" + variables.OpenAddFormHandler)
         .then(response => response.text())
@@ -68,22 +78,9 @@ function openAddForm(title) {
         })
 }
 
-function openEditForm(title) {
-    openModal(title);
-
-    fetch(location.href + "?handler=" + variables.OpenEditFormHandler)
-        .then(response => response.text())
-        .then(data => {
-            modalContent.innerHTML = data;
-            configureEditFormSubmit();
-        })
-}
-
-function openModal(title) {
-    modalTitle.innerHTML = title;
-    modal.show(title);
-}
-
+/**
+ * Configures form submission when adding a language.
+ */
 function configureAddFormSubmit() {
     const form = document.getElementById(variables.FormId);
 
@@ -99,6 +96,44 @@ function configureAddFormSubmit() {
     })
 }
 
+/**
+ * Adds a new language.
+ */
+function addLanguage() {
+    return submitForm(variables.AddLanguageHandler);
+}
+
+/**
+ * Adds events to language edit buttons to open edit form on click.
+ */
+function addOpenEditFormEventListener() {
+    const editButtons = document.getElementsByName(variables.EditLanguageButtonName);
+
+    editButtons.forEach(editButton => {
+        const id = editButton.dataset.id;
+
+        editButton.addEventListener("click", () => openEditForm(id));
+    })
+}
+
+/**
+ * Opens the edit language form.
+ * @param {number} id The ID of the entity to be edited.
+ */
+function openEditForm(id) {
+    openModal(editText);
+
+    fetch(location.href + "?handler=" + variables.OpenEditFormHandler + "&id=" + id)
+        .then(response => response.text())
+        .then(data => {
+            modalContent.innerHTML = data;
+            configureEditFormSubmit();
+        })
+}
+
+/**
+ * Configures form submission when editing a language.
+ */
 function configureEditFormSubmit() {
     const form = document.getElementById(variables.FormId);
 
@@ -115,18 +150,28 @@ function configureEditFormSubmit() {
 }
 
 /**
- * Adds a new language.
- */
-function addLanguage() {
-    return submitForm(variables.AddLanguageHandler);
-}
-
-/**
  * Updates the language.
  */
 function updateLanguage() {
-    // Дописать параметры 
     return submitForm(variables.UpdateLanguageHandler);
+}
+
+/**
+ * Creates the instance of the modal window.
+ * @returns {bootstrap.Modal} Modal window.
+ */
+function getModal() {
+    const element = document.getElementById(variables.ModalId);
+    return new bootstrap.Modal(element);
+}
+
+/**
+ * Opens the modal window.
+ * @param {string} title
+ */
+function openModal(title) {
+    modalTitle.innerHTML = title;
+    modal.show(title);
 }
 
 /**

@@ -1,4 +1,5 @@
 ﻿@page
+@using Store.Areas.Admin.Pages.Shared.Components;
 @model IndexModel
 
 <div class="header">
@@ -17,8 +18,11 @@
     <partial name="_Breadcrumbs" for="Breadcrumbs" />
 </div>
 
+<component type="typeof(DeleteConfirmation)" render-mode="Static" />
+
 <div class="card">
     <div class="card-header"></div>
+
     <div class="card-body">
         <form id="languages" class="table-responsive" method="post">
             <table class="table table-hover align-middle">
@@ -59,6 +63,7 @@
         </form>
     </div>
 </div>
+
 
 
 <div class="modal fade" id="@JavascriptVariables.Instance.ModalId" tabindex="-1" aria-labelledby="createTitle" aria-hidden="true">

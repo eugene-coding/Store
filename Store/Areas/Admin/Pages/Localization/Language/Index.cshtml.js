@@ -52,7 +52,10 @@ function updateList() {
     fetch(location.href + "?handler=" + variables.UpdateListHandler)
         .then(response => response.text())
         .then(data => document.getElementById(variables.ListParentId).innerHTML = data)
-        .then(() => addOpenEditFormEventListener());
+        .then(() => {
+            addOpenEditFormEventListener();
+            addOpenDeleteConfirmationEventListener();
+        });
 }
 
 /**
@@ -155,6 +158,55 @@ function configureEditFormSubmit() {
 function updateLanguage() {
     return submitForm(variables.UpdateLanguageHandler);
 }
+
+
+
+
+/**
+ * Adds events to language delete buttons to open delete confirmation form on click.
+ */
+function addOpenDeleteConfirmationEventListener() {
+    const deleteButtons = document.getElementsByName(variables.DeleteLanguageButtonName);
+
+    deleteButtons.forEach(deleteButton => {
+        const id = deleteButton.dataset.id;
+        console.log("Added event!");
+
+        deleteButton.addEventListener("click", () => {
+            console.log("Клик!");
+            openDeleteConfirmation(id);
+        });
+    })
+}
+
+/**
+ * Opens the edit language form.
+ * @param {number} id The ID of the entity to be edited.
+ */
+function openDeleteConfirmation(id) {
+
+    fetch(location.href + "?handler=" + variables.OpenDeleteConfirmationHandler)
+        .then(response => response.text())
+        .then(data => {
+            // Create a new element to hold the fetched data
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+
+            // Append the fetched data to an existing element or create a new container element
+            const container = document.body;
+            container.append(tempDiv);
+
+            // Find the newly added element within the container
+            const element = document.getElementById(variables.DeleteConfirmationModalId);
+            const modal = new bootstrap.Modal(element);
+            modal.show();
+
+            // Add event listeners to the newly added elements
+            //configureDeleteConfirmationSubmit();
+        })
+
+}
+
 
 /**
  * Creates the instance of the modal window.

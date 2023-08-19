@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
 
 using Newtonsoft.Json;
-
+using Store.Areas.Admin.Pages.Shared;
 using Store.Areas.Admin.Services;
 
 namespace Store.Areas.Admin.Pages.Localization.Language;
@@ -56,6 +56,11 @@ public class IndexModel : PageModel
         }
 
         return Partial("_Form", language);
+    }
+
+    public IActionResult OnGetDeleteConfirmation()
+    {
+        return Partial("_DeleteConfirmation");
     }
 
     public async Task<IActionResult> OnGetListAsync()
